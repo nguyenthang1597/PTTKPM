@@ -23,6 +23,10 @@ require('./config/express')(app, express, logger, cookieParser, bodyParser);
 app.use('/', index);
 app.use('/users', users);
 
+var NXB = require('./app/models/NXB');
+
+
+
 
 server.listen(process.env.PORT, (err) => {
 	if (err)
@@ -36,4 +40,21 @@ mysqlConnection.connect((err) => {
 		console.log("Mysql connect fail");
 	else
 		console.log('Mysql connected');
+})
+
+a = {
+	'MA_DOCGIA':'1',
+	'TEN' : 'Nguyen Van A',
+	'NGAYSINH' : '1997/9/19',
+	'GIOITINH' : 1,
+	'EMAIL' : 'a@a.a',
+	'DIACHI' : 'abcd',
+	'CMND' : '123456789000',
+	'NGUOIGIAMHO' : ''
+}
+
+var DOCGIA = require('./app/models/DOCGIA');
+DOCGIA.addDOCGIA(a)
+.catch(err => {
+	console.log(err);
 })
