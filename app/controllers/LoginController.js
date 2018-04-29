@@ -14,6 +14,7 @@ var LoginController = {
             if (!user) return res.redirect('/admin');
             req.logIn(user, (err) => {
                 if (err) return done(err);
+                req.session.user = user;
                 if (req.body.remember) {
                     req.session.cookie.originalMaxAge = 1000 * 60 * 3;
                 }
@@ -25,7 +26,6 @@ var LoginController = {
     },
     adminLogout: (req, res) => {
         req.logout();
-        console.log(req.session.cookie.expires);
         if(!req.session.cookie.expires)
             req.session.destroy();
         res.redirect('/admin');

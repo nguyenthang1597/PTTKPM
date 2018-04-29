@@ -1,6 +1,6 @@
 var AdminController = require('../app/controllers/AdminController');
 var LoginController = require('../app/controllers/LoginController');
-
+var AuthorController = require('../app/controllers/AuthorController');
 var mw = require('../config/middleware');
 module.exports = (app) => {
     app.get('/', (req, res) => {
@@ -9,5 +9,6 @@ module.exports = (app) => {
 
     app.use('/admin', AdminController);
 
+    app.use('/admin/author', mw.isLoggedInAdmin, AuthorController);
 
 }         

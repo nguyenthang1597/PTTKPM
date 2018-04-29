@@ -7,7 +7,7 @@ router.get('/',  mw.LoggedAdmin, LoginController.formAdminLogin);
 router.post('/', mw.LoggedAdmin, LoginController.adminLogin);
 
 router.get('/dashboard', (req, res) => {
-    if(req.user)
+    if(req.session.user)
         res.render('admin/dashboard', {
             layout: 'main-admin',
             title: 'Admin Dashboard',

@@ -28,6 +28,7 @@ require('./config/express')(app, express, session, hbs, logger, cookieParser, bo
 //config Route
 require('./routes/routes')(app);
 
+require('./app/controllers/ImageController')(app);
 
 server.listen(process.env.PORT, (err) => {
 	if (err)

@@ -16,7 +16,8 @@ var TACGIA = {
     },
     getById: (id) => {
         return new Promise((resolve, reject) => {
-            var query = `select * from TACGIA where id = '${id}'`;
+            var query = `select * from TACGIA where MA_TACGIA = '${id}'`;
+            console.log(query);
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
@@ -31,24 +32,32 @@ var TACGIA = {
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
+                else
+                    resolve(result);
             });
         });
     },
     updateTACGIA: (TACGIA) => {
         return new Promise((resolve, reject) => {
-            var query = `update TACGIA set TEN = '${TACGIA.TEN}, TUOI = ${TACGIA.TUOI}, THONGTIN = '${TACGIA.THONGTIN}' where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
+            var query = `update TACGIA set TEN = '${TACGIA.TEN}', TUOI = ${TACGIA.TUOI}, THONGTIN = '${TACGIA.THONGTIN}' where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
+            console.log(query);
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
+                else
+                    resolve(result);
             });
         });
     },
     deleteById: (id) => {
         return new Promise((resolve, reject) => {
-            var query = `delete TACGIA where MA_TACGIA = '${id}'`;
+            var query = `delete from TACGIA where MA_TACGIA = '${id}'`;
+            console.log(query);
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
+                else
+                    resolve(result);
             }); 
         })
     }
