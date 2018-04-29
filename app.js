@@ -5,27 +5,28 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mysqlConnection = require('./config/mysql')
+var session = require('express-session');
+var passport = require('passport');
+
+var flash = require('connect-flash');
+
+var mysql = require('./config/mysql')
+
+var hbs = require('./config/express-handlebars');
+
 
 require('dotenv').config()
 
-
-var index = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
-
 var server = http.createServer(app);
 
-require('./config/express')(app, express, logger, cookieParser, bodyParser);
+require('./config/passport')(passport, mysql);
 
 
-app.use('/', index);
-app.use('/users', users);
-
-var NXB = require('./app/models/NXB');
-
-
+//config Express
+require('./config/express')(app, express, session, hbs, logger, cookieParser, bodyParser, passport, flash);
+//config Route
+require('./routes/routes')(app);
 
 
 server.listen(process.env.PORT, (err) => {
@@ -35,26 +36,9 @@ server.listen(process.env.PORT, (err) => {
 		console.log('Server is running in localhost:' + process.env.PORT);
 })
 
-mysqlConnection.connect((err) => {
-	if(err)
+mysql.connect((err) => {
+	if (err)
 		console.log("Mysql connect fail");
 	else
 		console.log('Mysql connected');
-})
-
-a = {
-	'MA_DOCGIA':'1',
-	'TEN' : 'Nguyen Van A',
-	'NGAYSINH' : '1997/9/19',
-	'GIOITINH' : 1,
-	'EMAIL' : 'a@a.a',
-	'DIACHI' : 'abcd',
-	'CMND' : '123456789000',
-	'NGUOIGIAMHO' : ''
-}
-
-var DOCGIA = require('./app/models/DOCGIA');
-DOCGIA.addDOCGIA(a)
-.catch(err => {
-	console.log(err);
 })
