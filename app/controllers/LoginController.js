@@ -4,7 +4,8 @@ var LoginController = {
     formAdminLogin: (req, res) => {
         res.render('admin/login', {
             layout: false,
-            message: req.flash('loginMessage')
+            message: req.flash('loginMessage'),
+            success_message: req.flash('susscesMesage')
         })
     },
     adminLogin: (req, res, next) => {
@@ -13,16 +14,26 @@ var LoginController = {
             if (!user) return res.redirect('/admin');
             req.logIn(user, (err) => {
                 if (err) return done(err);
+                if (req.body.remember) {
+                    req.session.cookie.originalMaxAge = 1000 * 60 * 3;
+                }
+                else
+                    req.session.cookie.originalMaxAge = false;
                 return res.redirect('/admin/dashboard');
             })
-        })(req, res, next), (req, res) => {
-            if (req.body.remember) {
-                req.session.cookie.maxAge = 1000 * 60 * 3;
-
-            }
-            else
-                req.session.cookie.maxAge = false;
-        }
+        })(req, res, next)
+    },
+    adminLogout: (req, res) => {
+        req.logout();
+        console.log(req.session.cookie.expires);
+        if(!req.session.cookie.expires)
+            req.session.destroy();
+        res.redirect('/admin');
+    },
+    logout: (req, res, next) => {
+        req.logout();
+        req.session = {};
+        res.redirect('/');
     }
 }
 

@@ -33,7 +33,7 @@ module.exports = (passport, mysql) => {
                     return done(null, false, req.flash('loginMessage', 'Tài khoản đã bị khoá!!!'));
                 if(!bcrypt.compareSync(password, result[0].PASSWORD))
                     return done(null, false, req.flash('loginMessage', 'Mật khẩu không đúng!!!'));
-                return done(null, result[0]);
+                return done(null, result[0], req.flash('successMessage', 'ok'));
             })
         }
     )

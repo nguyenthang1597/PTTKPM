@@ -8,7 +8,6 @@ var THELOAI = {
                 if (err)
                     reject(err);
                 else {
-                    console.log(fields);
                     resolve(result);
                 }
             });

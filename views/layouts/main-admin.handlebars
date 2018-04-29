@@ -154,7 +154,8 @@
                             </li>
                         </ul>
                     </li>
-                     <li class="has-sub">
+                    {{#ifCond user.ROLE '>=' 1}}
+                    <li class="has-sub">
                         <a href="#">
                             <i class="entypo-layout"></i>
                             <span class="title">Quản lý Thủ thư</span>
@@ -172,6 +173,7 @@
                             </li>
                         </ul>
                     </li>
+                    {{/ifCond}}
                 </ul>
 
             </div>

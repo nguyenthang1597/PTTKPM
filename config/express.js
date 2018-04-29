@@ -13,7 +13,7 @@ module.exports = function (app, express, session, hbs, logger, cookieParser, bod
 
 	app.use(session({
 		secret: 'abcd',
-		resave: true,
+		resave: false,
 		saveUninitialized: true
 	}));
 

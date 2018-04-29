@@ -7,13 +7,7 @@ module.exports = (app) => {
         res.render('index', {title: 'Express'})
     })
 
-    app.use('/admin/login', LoginController.formAdminLogin)
     app.use('/admin', AdminController);
 
 
-
-
-
-    
-    
 }         

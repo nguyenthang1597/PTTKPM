@@ -8,7 +8,21 @@
     <link rel="stylesheet" href="/assets/admin/css/bootstrap.css">
     <link rel="stylesheet" href="/assets/admin/css/login.css">
     <script src="/assets/admin/js/jquery-2.2.3.min.js"></script>
+    <style>
+        input[type='checkbox'] {
+            float: left;
+            width: 20px;
+            margin-bottom: 10px
+        }
 
+        input[type='checkbox'] + label {
+            display: block;
+            width: 100px;
+        }
+        label {
+            margin-top: 4px;
+        }
+    </style>
 
 </head>
 
@@ -18,11 +32,12 @@
         <form method="post">
             <input type="text" name="username" placeholder="Username" required="required" />
             <input type="password" name="password" placeholder="Password" required="required" />
+            <input type="checkbox" name="remember" id="remember">
+            <label for="remember">GHi nhớ tôi?</label>
             <button type="submit" class="btn btn-primary btn-block btn-large">Đăng nhập</button>
         </form>
-        <br> 
-        {{#if message}}
-            <div class="alert alert-danger">{{message}}</div>
+        <br> {{#if message}}
+        <div class="alert alert-danger">{{message}}</div>
         {{/if}}
     </div>
     <script type="text/javascript">

@@ -9,7 +9,6 @@ var THUTHU = {
                 if (err)
                     reject(err);
                 else {
-                    console.log(fields);
                     resolve(result);
                 }
             });

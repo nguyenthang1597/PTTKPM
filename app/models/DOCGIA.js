@@ -9,7 +9,6 @@ var DOCGIA = {
                 if (err)
                     reject(err);
                 else {
-                    console.log(fields);
                     resolve(result);
                 }
             });
