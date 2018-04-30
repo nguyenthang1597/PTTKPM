@@ -36,7 +36,6 @@ router.post('/edit/:id', (req, res) => {
         'TUOI': req.body.TUOI,
         'THONGTIN': req.body.THONGTIN
     }
-    console.log(req.body);
 
     Author.updateTACGIA(TACGIA)
         .then(result => {

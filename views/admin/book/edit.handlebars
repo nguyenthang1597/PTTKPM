@@ -1,0 +1,201 @@
+<div class="main-content">
+
+    {{>header-admin}}
+
+    <hr /> {{>breadcrumb-admin}}
+    <h2>{{heading}}</h2>
+    <form method="POST" enctype="multipart/form-data" class="form-horizontal form-groups-bordered">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-primary" data-collapsed="0">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            {{heading}}
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Nhà Xuất bản</label>
+
+                            <div class="col-sm-5">
+
+                                <select class="form-control" name="NXB">
+                                    {{#each publishers}}
+                                    <option value="{{{MA_NXB}}}">{{TEN}}</option>
+                                    {{/each}}
+                                    <script>
+                                        var options = $('option');
+                                        for (i = 0; i < options.length; i++) {
+                                            if (options.eq(i).val() == {{{book.NXB}}}){
+                                            options.eq(i).attr('selected', true);
+                                            }
+                                        }
+                                    </script>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Ảnh thumbnail</label>
+                            <div class="col-sm-5">
+                                {{#if book.picture}}
+                                <img src="/upload/book/{{book.picture}}" width="400" height="auto" alt=""> {{else}}
+                                <input type="file" name="thumbnail" class="form-control"> {{/if}}
+                            </div>
+                        </div>
+
+                        {{#if book.picture}}
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Chọn ảnh thumbnail khác</label>
+                            <div class="col-sm-5">
+                                <input type="file" name="thumbnail" class="form-control">
+                            </div>
+                        </div>
+                        {{/if}}
+
+
+
+
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Tên sách</label>
+
+                            <div class="col-sm-8">
+
+                                <input type="text" name="TEN" value="{{book.TEN}}" id="TEN" class="form-control" placeholder="Tên sách" required>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Số lượng</label>
+
+                            <div class="col-sm-8">
+
+                                <input type="text" name="SOLUONG" value="{{book.SOLUONG}}" id="SOLUONG" class="form-control" placeholder="Số lượng" required>
+
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="col-sm-3 control-label">Năm xuất bản</label>
+
+                            <div class="col-sm-8">
+
+                                <input type="text" name="NAMXB" value="{{book.NAMXB}}" id="NAMXB" class="form-control" placeholder="Năm xuất bản" required>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Tóm tắt</label>
+
+                            <div class="col-sm-8">
+                                <textarea name="summary" id="summary" class="textarea" placeholder="Tóm tắt" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{book.SUMMARY}}</textarea>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Nội dung sách</label>
+
+                            <div class="col-sm-8">
+                                <textarea name="content" id="content" class="textarea" placeholder="Nội dùng sách" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{book.CONTENT}}</textarea>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Ẩn/hiện sách</label>
+
+                            <div class="col-sm-5">
+
+                                <div class="bs-example">
+                                    <div class="make-switch" data-on="primary" data-off="info">
+                                        {{#if book.isHide}}
+                                        <input type="checkbox" name="isHide" checked> {{else}}
+                                        <input type="checkbox" name="isHide"> {{/if}}
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Nổi bật sách (đưa lên khung nổi bật)</label>
+
+                            <div class="col-sm-5">
+
+                                <div class="bs-example">
+                                    <div class="make-switch" data-on="primary" data-off="info">
+                                        {{#if book.isHighlight}}
+                                        <input type="checkbox" name="isHighlight" checked> {{else}}
+                                        <input type="checkbox" name="isHighlight"> {{/if}}
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-8" style="text-align: center;">
+
+                    <div class="bs-example">
+                        <button type="submit" class="btn btn-green btn-icon">
+                            Sửa
+                            <i class="entypo-check"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+    </form>
+    </div>
+
+    <br />
+
+</div>
+
+
+
+
+
+
+{{#section 'scripts'}}
+<!-- Imported styles on this page -->
+
+<!-- Bottom scripts (common) -->
+<script src="/assets/admin/js/gsap/TweenMax.min.js"></script>
+<script src="/assets/admin/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="/assets/admin/js/bootstrap.js"></script>
+<script src="/assets/admin/js/resizeable.js"></script>
+<script src="/assets/admin/js/neon-api.js"></script>
+<script src="/assets/admin/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+
+<!-- JavaScripts initializations and stuff -->
+<script src="/assets/admin/js/neon-custom.js"></script>
+
+<!-- Imported scripts on this page -->
+<script src="/assets/admin/js/bootstrap-switch.min.js"></script>
+
+<!-- Demo Settings -->
+<script src="/assets/admin/js/neon-demo.js"></script>
+
+<script type="text/javascript" src="/assets/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/assets/ckeditor/adapters/jquery.js"></script>
+
+<script type="text/javascript">
+    CKEDITOR.replace('content', {
+        "extraPlugins": 'imagebrowser',
+        "imageBrowser_listUrl": "/files"
+    });
+    CKEDITOR.replace('summary', {
+        "extraPlugins": 'imagebrowser',
+        "imageBrowser_listUrl": "/files"
+    });
+</script>
+ {{/section}}

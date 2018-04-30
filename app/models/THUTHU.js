@@ -45,7 +45,7 @@ var THUTHU = {
     },
     deleteById: (id) => {
         return new Promise((resolve, reject) => {
-            var query = `delete THUTHU where MA_THUTHU = '${id}'`;
+            var query = `delete from THUTHU where MA_THUTHU = '${id}'`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);

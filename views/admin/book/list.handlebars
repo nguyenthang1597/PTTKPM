@@ -1,0 +1,151 @@
+<div class="main-content">
+
+	{{>header-admin}}
+
+	<hr /> {{>breadcrumb-admin}}
+	<h2>{{title}}</h2>
+	{{#if message}}
+	<div class="alert alert-success">{{message}}</div>
+	{{/if}}
+	<div class="row">
+		<div class="col-md-12">
+
+			<div class="panel panel-primary" data-collapsed="0">
+
+				<div class="panel-heading">
+					<div class="panel-title">
+						{{heading}}
+					</div>
+
+				</div>
+
+				<script type="text/javascript">
+					jQuery(document).ready(function ($) {
+						var $table1 = jQuery('#table-1');
+						// Initialize DataTable
+						$table1.DataTable({
+							"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+							"bStateSave": true
+						});
+					});
+				</script>
+
+				<div class="panel-body">
+					<table class="table table-bordered datatable" id="table-1">
+						<thead>
+							<tr>
+								<th data-hide="phone">Mã sách</th>
+								<th>Tên sách</th>
+								<th>Năm xuất bản</th>
+                                <th>Thumbnail</th>
+								<th data-hide="phone,tablet">Hiện</th>
+								<th data-hide="phone,tablet">Nổi bật</th>
+								<th>Người nhập</th>
+                                <th>Ngày nhập</th>
+                                <th>Số lượng</th>
+								<th>NXB</th>
+                                <th>Cập nhật gần đây</th>
+								<th>Thao tác</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each books}}
+							<tr class="odd gradeX">
+								<td>{{MA_SACH}}</td>
+								<td>{{TEN}}</td>
+								<td>{{NAMXB}}</td>
+                                <td>
+									{{#if picture}}
+										<img src="/upload/book/{{picture}}" width="60" height="auto" alt="">
+									{{else}}
+										No image
+									{{/if}}
+								</td>
+								
+								<td class="center">
+									<div class="make-switch" data-on="primary" data-off="info">
+										<input type="hidden" id="id" value="{{isHide}}">
+										{{#if isHide}}
+											<input type="checkbox" id="ishide" name="isHide" checked>
+										{{else}}
+											<input type="checkbox" id="ishide" name="isHide">
+										{{/if}}
+										
+									</div>
+								</td>
+								<td class="center">
+									<div class="make-switch" data-on="primary" data-off="info">
+										<input type="hidden" id="id" value="{{isHighlight}}">
+										{{#if isHighlight}}
+											<input type="checkbox" id="ishighlight" name="isHighlight" checked>
+										{{else}}
+											<input type="checkbox" id="ishighlight" name="isHighlight">
+										{{/if}}
+									</div>
+								</td>
+								<td>{{NGUOINHAP}}</td>
+								<td>{{NGAYNHAP}}</td>
+                                <td>{{SOLUONG}}</td>
+                                <td>{{TENNXB}}</td>
+								<td>{{NGAYCANHAT}}</td>
+								<td class="center">
+									<a href="/admin/book/edit/{{MA_SACH}}" class="btn btn-primary btn-sm btn-icon icon-left">
+										<i class="entypo-pencil"></i>
+										Sửa
+									</a>
+									<a href="javascript:void(0)" class="btn btn-danger btn-sm btn-icon icon-left deletearticle">
+										<i class="entypo-cancel"></i>
+										Xoá
+									</a>
+								</td>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br />
+</div>
+
+
+ {{#section 'scripts'}}
+<!-- Imported styles on this page -->
+
+<!-- Bottom scripts (common) -->
+<script src="/assets/admin/js/gsap/TweenMax.min.js"></script>
+<script src="/assets/admin/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="/assets/admin/js/bootstrap.js"></script>
+<script src="/assets/admin/js/resizeable.js"></script>
+<script src="/assets/admin/js/neon-api.js"></script>
+<script src="/assets/admin/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+
+
+
+<!-- Imported scripts on this page -->
+<script src="/assets/admin/scripts/book.js"></script>
+
+
+
+<script src="/assets/admin/js/datatables/datatables.js"></script>
+
+<!-- JavaScripts initializations and stuff -->
+<script src="/assets/admin/js/neon-custom.js"></script>
+
+<!-- Imported scripts on this page -->
+<script src="/assets/admin/js/bootstrap-switch.min.js"></script>
+
+<!-- Demo Settings -->
+<script src="/assets/admin/js/neon-demo.js"></script>
+
+
+
+
+<script>
+	$(document).ready(function () {
+		//bootstrap WYSIHTML5 - text editor
+		$('#table-1').DataTable();
+		$('div.alert').delay(5000).slideUp();
+	});
+</script> {{/section}}

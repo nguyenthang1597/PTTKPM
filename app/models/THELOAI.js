@@ -44,7 +44,7 @@ var THELOAI = {
     },
     deleteById: (id) => {
         return new Promise((resolve, reject) => {
-            var query = `delete THELOAI where MA_DOCGIA = '${id}'`;
+            var query = `delete from THELOAI where MA_DOCGIA = '${id}'`;
             mysql.query(query, (err, result, fields) => {
                 if(err)
                     reject(err);

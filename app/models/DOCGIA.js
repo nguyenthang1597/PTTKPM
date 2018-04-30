@@ -45,7 +45,7 @@ var DOCGIA = {
     },
     deleteById: (id) => {
         return new Promise((resolve, reject) => {
-            var query = `delete DOCGIA where MA_DOCGIA = '${id}'`;
+            var query = `delete from DOCGIA where MA_DOCGIA = '${id}'`;
             mysql.query(query, (err, result, fields) => {
                 if(err)
                     reject(err);
