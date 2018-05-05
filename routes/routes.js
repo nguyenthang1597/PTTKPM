@@ -2,6 +2,8 @@ var AdminController = require('../app/controllers/AdminController');
 var LoginController = require('../app/controllers/LoginController');
 var AuthorController = require('../app/controllers/AuthorController');
 var BookController = require('../app/controllers/BookController');
+var GenreController = require('../app/controllers/GenreController');
+var PublisherController = require('../app/controllers/PublisherController');
 
 var mw = require('../config/middleware');
 module.exports = (app) => {
@@ -13,5 +15,7 @@ module.exports = (app) => {
 
     app.use('/admin/author', mw.isLoggedInAdmin, AuthorController);
     app.use('/admin/book', mw.isLoggedInAdmin, BookController);
+    app.use('/admin/genre', mw.isLoggedInAdmin, GenreController);
+    app.use('/admin/publisher', mw.isLoggedInAdmin, PublisherController);
 
 }         

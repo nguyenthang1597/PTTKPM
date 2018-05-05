@@ -9,7 +9,7 @@
     <div class="alert alert-success">{{successMessage}}</div>
     {{/if}}
     {{#if errorMessage}}
-    <div class="alert alert-success">{{errorMessage}}</div>
+    <div class="alert alert-danger">{{errorMessage}}</div>
     {{/if}}
     <div class="row">
         <div class="col-md-12">
@@ -28,25 +28,24 @@
                     <table class="table table-bordered datatable" id="table-1">
                         <thead>
                             <tr>
-                                <th>Mã tác giả</th>
-                                <th>Tên</th>
-                                <th>Tuổi</th>
+                                <th>Mã thể loại</th>
+                                <th>Tên thể loại</th>
+                                
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each authors}}
+                            {{#each genres}}
                             <tr class="odd gradeX">
-                                <td id="id">{{MA_TACGIA}}</td>
+                                <td id="id">{{MA_THELOAI}}</td>
                                 <td>{{TEN}}</td>
-                                <td>{{TUOI}}</td>
 
                                 <td class="center">
-                                    <a href="/admin/author/edit/{{MA_TACGIA}}" class="btn btn-primary btn-sm btn-icon icon-left">
+                                    <a href="/admin/genre/edit/{{MA_THELOAI}}" class="btn btn-primary btn-sm btn-icon icon-left">
                                         <i class="entypo-pencil"></i>
                                         Sửa
                                     </a>
-                                    <a href="javascript:void(0)" class="btn btn-danger btn-sm btn-icon icon-left deleteAuthor">
+                                    <a href="javascript:void(0)" class="btn btn-danger btn-sm btn-icon icon-left deleteGenre">
                                         <i class="entypo-cancel"></i>
                                         Xoá
                                     </a>
@@ -75,7 +74,7 @@
 
 
 <!-- Imported scripts on this page -->
-<script src="/assets/admin/scripts/author.js"></script>
+<script src="/assets/admin/scripts/genre.js"></script>
 
 
 
@@ -97,5 +96,6 @@
     $(document).ready(function () {
         //bootstrap WYSIHTML5 - text editor
         $('#table-1').DataTable();
+        $('div.alert').delay(5000).slideUp();
     });
 </script> {{/section}}

@@ -25,10 +25,12 @@ var NXB = {
     },
     addNXB: (NXB) => {
         return new Promise((resolve, reject) => {
-            var query = `insert into NHAXUATBAN(MA_NXB, TEN, THONGTIN) values ('${NXB.MA_NXB}', '${NXB.TEN}', '${NXB.THONGTIN}')`
+            var query = `insert into NHAXUATBAN(TEN, THONGTIN) values ('${NXB.TEN}', '${NXB.THONGTIN}')`
             mysql.query(query, (err, result, fields) => {
                 if(err)
-                    reject(err);                    
+                    reject(err);    
+                else
+                    resolve(result);                
             });
         });
     },
@@ -38,6 +40,8 @@ var NXB = {
             mysql.query(query, (err, result, fields) => {
                 if(err)
                     reject(err);
+                else
+                    resolve(result);
             });
         });
     },
@@ -47,6 +51,8 @@ var NXB = {
             mysql.query(query, (err, result, fields) => {
                 if(err)
                     reject(err);
+                else
+                    resolve(result);
             });
         });
     }

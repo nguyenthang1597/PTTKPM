@@ -4,8 +4,11 @@
 
 	<hr /> {{>breadcrumb-admin}}
 	<h2>{{title}}</h2>
-	{{#if message}}
-	<div class="alert alert-success">{{message}}</div>
+	{{#if successMessage}}
+	<div class="alert alert-success">{{successMessage}}</div>
+	{{/if}}
+	{{#if errorMessage}}
+	<div class="alert alert-danger">{{errorMessage}}</div>
 	{{/if}}
 	<div class="row">
 		<div class="col-md-12">
@@ -51,7 +54,7 @@
 						<tbody>
 							{{#each books}}
 							<tr class="odd gradeX">
-								<td>{{MA_SACH}}</td>
+								<td id="id">{{MA_SACH}}</td>
 								<td>{{TEN}}</td>
 								<td>{{NAMXB}}</td>
                                 <td>
@@ -65,22 +68,22 @@
 								<td class="center">
 									<div class="make-switch" data-on="primary" data-off="info">
 										<input type="hidden" id="id" value="{{isHide}}">
-										{{#if isHide}}
+										{{#ifCond isHide '===' 1}}
 											<input type="checkbox" id="ishide" name="isHide" checked>
 										{{else}}
 											<input type="checkbox" id="ishide" name="isHide">
-										{{/if}}
+										{{/ifCond}}
 										
 									</div>
 								</td>
 								<td class="center">
 									<div class="make-switch" data-on="primary" data-off="info">
 										<input type="hidden" id="id" value="{{isHighlight}}">
-										{{#if isHighlight}}
+										{{#ifCond isHighlight '===' 1}}
 											<input type="checkbox" id="ishighlight" name="isHighlight" checked>
 										{{else}}
 											<input type="checkbox" id="ishighlight" name="isHighlight">
-										{{/if}}
+										{{/ifCond}}
 									</div>
 								</td>
 								<td>{{NGUOINHAP}}</td>
@@ -93,7 +96,7 @@
 										<i class="entypo-pencil"></i>
 										Sửa
 									</a>
-									<a href="javascript:void(0)" class="btn btn-danger btn-sm btn-icon icon-left deletearticle">
+									<a href="javascript:void(0)" class="btn btn-danger btn-sm btn-icon icon-left deletebook">
 										<i class="entypo-cancel"></i>
 										Xoá
 									</a>

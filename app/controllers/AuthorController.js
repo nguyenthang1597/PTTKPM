@@ -11,7 +11,8 @@ router.get('/list', (req, res) => {
                 authors: result,
                 title: 'Quản lý tác giả',
                 heading: 'Danh sách tác giả',
-                message: req.flash('AuthorMessage')[0]
+                successMessage: req.flash('successMessage')[0],
+                errorMessage: req.flash('errorMessage')[0]
             })
         })
 })
@@ -24,14 +25,14 @@ router.get('/edit/:id', (req, res) => {
                 author: result,
                 title: 'Quản lý tác giả',
                 heading: 'Chỉnh sửa thông tin tác giả',
-
+                author: result
             })
         })
 })
 
 router.post('/edit/:id', (req, res) => {
     var TACGIA = {
-        'MA_TACGIA': req.body.MA_TACGIA,
+        'MA_TACGIA': req.params.id,
         'TEN': req.body.TEN,
         'TUOI': req.body.TUOI,
         'THONGTIN': req.body.THONGTIN
@@ -39,7 +40,6 @@ router.post('/edit/:id', (req, res) => {
 
     Author.updateTACGIA(TACGIA)
         .then(result => {
-            console.log(result);
             req.flash('AuthorMessage', 'Chỉnh sửa thành công');
             res.redirect('/admin/author/list');
         })
@@ -51,7 +51,6 @@ router.post('/edit/:id', (req, res) => {
 
 router.post('/delete', (req, res) => {
     if (req.xhr || req.header.accept.indexOf('json') > -1) {
-        console.log('ok');
         Author.deleteById(req.body.id)
             .then(result => {
                 res.send('Xoá tác giả thành công');
@@ -75,7 +74,6 @@ router.get('/add', (req, res) => {
 
 router.post('/add', (req, res) => {
     var author = {
-        'MA_TACGIA' : req.body.MA_TACGIA,
         'TEN' : req.body.TEN,
         'TUOI' : req.body.TUOI,
         'THONGTIN' : req.body.THONGTIN
@@ -83,11 +81,12 @@ router.post('/add', (req, res) => {
 
     Author.addTACGIA(author)
     .then(result=> {
-        req.flash('AuthorMessage', 'Thêm Tác giả thành công');
+        req.flash('successMessage', 'Thêm Tác giả thành công');
         res.redirect('/admin/author/list');
     })
     .catch(err => {
-        req.flash('AuthorMessage', 'Thêm Tác giả không thành công');
+        console.log(err);
+        req.flash('errorMessage', 'Thêm Tác giả không thành công');
         res.redirect('/admin/author/list');
     })
 })

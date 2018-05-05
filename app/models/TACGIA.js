@@ -28,7 +28,12 @@ var TACGIA = {
     },
     addTACGIA: (TACGIA) => {
         return new Promise((resolve, reject) => {
-            var query = `insert into TACGIA (MA_TACGIA, TEN, TUOI, THONGTIN) values ('${TACGIA.MA_TACGIA}','${TACGIA.TEN}',${TACGIA.TUOI},'${TACGIA.THONGTIN}')`;
+            var query = '';
+            if (TACGIA.TUOI)
+                query = `insert into TACGIA (TEN, TUOI, THONGTIN) values ('${TACGIA.TEN}', '${TACGIA.TUOI}' ,'${TACGIA.THONGTIN}')`;
+            else
+                query = `insert into TACGIA (TEN, TUOI, THONGTIN) values ('${TACGIA.TEN}', null ,'${TACGIA.THONGTIN}')`;
+            console.log(query);
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
@@ -39,7 +44,11 @@ var TACGIA = {
     },
     updateTACGIA: (TACGIA) => {
         return new Promise((resolve, reject) => {
-            var query = `update TACGIA set TEN = '${TACGIA.TEN}', TUOI = ${TACGIA.TUOI}, THONGTIN = '${TACGIA.THONGTIN}' where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
+            var query = '';
+            if (TACGIA.TUOI)
+                query = `update TACGIA set TEN = '${TACGIA.TEN}', TUOI = ${TACGIA.TUOI}, THONGTIN = '${TACGIA.THONGTIN}' where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
+            else
+                query = `update TACGIA set TEN = '${TACGIA.TEN}', THONGTIN = '${TACGIA.THONGTIN}' where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
             console.log(query);
             mysql.query(query, (err, result, fields) => {
                 if (err)
@@ -58,7 +67,7 @@ var TACGIA = {
                     reject(err);
                 else
                     resolve(result);
-            }); 
+            });
         })
     }
 }

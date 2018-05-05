@@ -3,7 +3,7 @@ var mysql = require('../../config/mysql');
 var THELOAI = {
     getAll: () => {
         return new Promise((resolve, reject) => {
-            var query = 'select * from DOCGIA';
+            var query = 'select * from THELOAI';
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
@@ -15,7 +15,7 @@ var THELOAI = {
     },
     getById: (id) => {
         return new Promise((resolve, reject) => {
-            var query = `select * from THELOAI where id = '${id}'`;
+            var query = `select * from THELOAI where MA_THELOAI = '${id}'`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
@@ -26,30 +26,38 @@ var THELOAI = {
     },
     addTHELOAI: (THELOAI) => {
         return new Promise((resolve, reject) => {
-            var query = `insert into THELOAI (MA_THELOAI, TEN) values ('${THELOAI.MA_THELOAI}','${THELOAI.TEN}')`;
+            var query = `insert into THELOAI (TEN) values ('${THELOAI.TEN}')`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
+                else
+                    resolve(result);
             });
         });
     },
     updateTHELOAI: (THELOAI) => {
         return new Promise((resolve, reject) => {
-            var query = `update THELOAI set TEN = '${THELOAI.TEN} where MA_THELOAI = '${THELOAI.MA_THELOAI}'`;
+            var query = `update THELOAI set TEN = '${THELOAI.TEN}' where MA_THELOAI = '${THELOAI.MA_THELOAI}'`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
+                else
+                    resolve(result);
             });
-        })    
+        })
     },
     deleteById: (id) => {
         return new Promise((resolve, reject) => {
-            var query = `delete from THELOAI where MA_DOCGIA = '${id}'`;
+            var query = `delete from THELOAI where MA_THELOAI = '${id}'`;
             mysql.query(query, (err, result, fields) => {
-                if(err)
+                if (err)
                     reject(err);
+                else
+                    resolve(result);
             });
-        });  
+        });
     }
 
 }
+
+module.exports = THELOAI;

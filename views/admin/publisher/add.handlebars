@@ -21,25 +21,15 @@
 
                             <div class="col-sm-8">
 
-                                <input type="text" name="TEN" value="{{author.TEN}}" id="TEN" class="form-control" placeholder="Tên" required>
+                                <input type="text" name="TEN" value="" id="TEN" class="form-control" placeholder="Tên" required>
 
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">Tuổi</label>
-
-                            <div class="col-sm-8">
-
-                                <input type="text" name="TUOI" value="{{author.TUOI}}" id="TUOI" class="form-control" placeholder="Tuổi">
-
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Thông tin</label>
 
                             <div class="col-sm-8">
-                                <textarea name="THONGTIN" id="THONGTIN" class="textarea" placeholder="Thông tin" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{author.THONGTIN}}</textarea>
+                                <textarea name="THONGTIN" id="THONGTIN" class="textarea" placeholder="Thông tin" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{article.content}}</textarea>
 
                             </div>
                         </div>
@@ -51,7 +41,7 @@
                 <div class="col-sm-8" style="text-align: center;">
                     <div class="bs-example">
                         <button type="submit" class="btn btn-green btn-icon">
-                            Sửa thông tin tác giả
+                            Thêm
                             <i class="entypo-check"></i>
                         </button>
                     </div>

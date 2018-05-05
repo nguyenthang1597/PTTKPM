@@ -27,7 +27,7 @@ var DOCGIA = {
     },
     addDOCGIA: (DOCGIA) => {
         return new Promise((resolve, reject) => {
-            var query = `insert into DOCGIA (MA_DOCGIA, TEN, NGAYSINH, GIOITINH, EMAIL, DIACHI, CMND, NGUOIGIAMHO) values ('${DOCGIA.MA_DOCGIA}', '${DOCGIA.TEN}','${DOCGIA.NGAYSINH}', ${DOCGIA.GIOITINH}, '${DOCGIA.EMAIL}', '${DOCGIA.DIACHI}', '${DOCGIA.CMND}', '${DOCGIA.NGUOIGIAMHO}')`;
+            var query = `insert into DOCGIA (TEN, NGAYSINH, GIOITINH, EMAIL, DIACHI, CMND, NGUOIGIAMHO) values ('${DOCGIA.TEN}','${DOCGIA.NGAYSINH}', ${DOCGIA.GIOITINH}, '${DOCGIA.EMAIL}', '${DOCGIA.DIACHI}', '${DOCGIA.CMND}', '${DOCGIA.NGUOIGIAMHO}')`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
