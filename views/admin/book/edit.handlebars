@@ -71,6 +71,16 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">Thể loại</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" name="MA_THELOAI">
+                                    {{#each genres}}
+                                    <option value="{{{MA_THELOAI}}}">{{TEN}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">Số lượng</label>
 
                             <div class="col-sm-8">

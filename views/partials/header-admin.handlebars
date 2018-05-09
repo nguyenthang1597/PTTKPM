@@ -11,6 +11,21 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="/assets/admin/images/profilePicture.png" alt="" class="img-circle" width="44" /> {{user.USERNAME}}
                 </a>
+                {{#ifCond user.ROLE '==' 1}}
+                <ul class="dropdown-menu">
+
+                    <!-- Reverse Caret -->
+                    <li class="caret"></li>
+
+                    
+                    <li>
+                        <a href="/admin/librarian/profile-edit">
+                            <i class="entypo-user"></i>
+                            Edit Profile
+                        </a>
+                    </li>
+                </ul>
+                {{/ifCond}}                   
             </li>
         </ul>
     </div>

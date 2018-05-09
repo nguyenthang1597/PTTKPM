@@ -11,7 +11,8 @@ router.get('/dashboard', (req, res) => {
         res.render('admin/dashboard', {
             layout: 'main-admin',
             title: 'Admin Dashboard',
-            user: req.user
+            user: req.user,
+            message: req.flash('message')[0]
         });
     else
         res.redirect('/admin');

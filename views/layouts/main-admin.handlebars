@@ -80,7 +80,7 @@
                     <!-- add class "multiple-expanded" to allow multiple submenus to open -->
                     <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
                     <li class="active opened active">
-                        <a href="index.html">
+                        <a href="/admin/dashboard">
                             <i class="entypo-gauge"></i>
                             <span class="title">Dashboard</span>
                         </a>
@@ -174,7 +174,7 @@
                             </li>
                         </ul>
                     </li>
-                    {{#ifCond user.ROLE '>=' 1}}
+                    {{#ifCond user.ROLE '>' 1}}
                     <li class="has-sub">
                         <a href="#">
                             <i class="entypo-layout"></i>
@@ -182,12 +182,12 @@
                         </a>
                         <ul>
                             <li>
-                                <a href="#">
+                                <a href="/admin/librarian/list">
                                     <span class="title">Danh sách Thủ thư</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="">
                                     <span class="title">Thêm thủ thư</span>
                                 </a>
                             </li>

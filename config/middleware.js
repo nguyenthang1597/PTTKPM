@@ -14,7 +14,7 @@ var middleware = {
     },
     isThuThuAccess: (req, res, next)=>{
         if(req.isAuthenticated()){
-            if(req.user.role == 1)
+            if(req.user.role != 1)
                 return res.redirect('/admin/dashboard');
         }
         next();
@@ -27,9 +27,13 @@ var middleware = {
         next();
     },
     isSysAndAdminAccess: (req, res, next) => {
-        if(req.isAuthenticated())
-            (req.user.role == 1)
-                res.redirect('/admin/dashboard');
+        if(req.isAuthenticated()){
+            if(req.user.ROLE == 1){
+                return res.render('admin/warning', {
+                    layout: 'main-admin'
+                })
+            }  
+        }
         next();
     },
 

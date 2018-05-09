@@ -16,7 +16,7 @@ var THUTHU = {
     },
     getById: (id) => {
         return new Promise((resolve, reject) => {
-            var query = `select * from THUTHU where id = '${id}'`;
+            var query = `select TEN, GIOITINH, DIACHI, EMAIL, SDT, DATE_FORMAT(NGAYSINH, '%Y-%m-%d') as NGAYSINH from THUTHU where MA_THUTHU = '${id}'`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
@@ -27,10 +27,12 @@ var THUTHU = {
     },
     addTHUTHU: (THUTHU) => {
         return new Promise((resolve, reject) => {
-            var query = `insert into THUTHU (MA_THUTHU, TEN, NGAYSINH, GIOITINH, DIACHI, EMAIL, SDT) values ('${THUTHU.MA_THUTHU}','${THUTHU.TEN}','${THUTHU.NGAYSINH}',${THUTHU.GIOITINH},'${THUTHU.DIACHI}','${THUTHU.EMAIL}','${THUTHU.SDT}')`;
+            var query = `insert into THUTHU (TEN, NGAYSINH, GIOITINH, DIACHI, EMAIL, SDT) values ('${THUTHU.TEN}','${THUTHU.NGAYSINH}',${THUTHU.GIOITINH},'${THUTHU.DIACHI}','${THUTHU.EMAIL}','${THUTHU.SDT}')`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
+                else
+                    resolve(result);
             });
         })
     },
@@ -40,6 +42,8 @@ var THUTHU = {
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
+                else
+                    resolve(result);
             });
         });
     },
@@ -49,6 +53,8 @@ var THUTHU = {
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
+                else
+                    resolve(result);
             });
         });
     }

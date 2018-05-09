@@ -44,7 +44,8 @@ router.get('/list', (req, res) => {
                 layout: 'main-admin',
                 title: 'Quản lý sách',
                 heading: 'Danh sách sách',
-                message: req.flash('BookMessage')[0],
+                successMessage: req.flash('successMessage')[0],
+                errorMessage: req.flash('errorMessage')[0],
                 books: result
             })
         })
@@ -57,14 +58,18 @@ router.get('/edit/:id', (req, res) => {
                 .then(publishers => {
                     Author.getAll()
                         .then(authors => {
-                            res.render('admin/book/edit', {
-                                layout: 'main-admin',
-                                title: 'Quản lý sách',
-                                heading: 'Sửa thông tin sách',
-                                message: req.flash('BookMessage')[0],
-                                book: book,
-                                publishers: publishers,
-                                authors: authors
+                            Genre.getAll()
+                            .then(genres => {
+                                res.render('admin/book/edit', {
+                                    layout: 'main-admin',
+                                    title: 'Quản lý sách',
+                                    heading: 'Sửa thông tin sách',
+                                    message: req.flash('BookMessage')[0],
+                                    book: book,
+                                    publishers: publishers,
+                                    authors: authors,
+                                    genres: genres
+                                })
                             })
                         })
                 })
@@ -117,6 +122,12 @@ router.post('/edit/:id', (req, res) => {
                                         req.flash('successMessage', 'Sửa thông tin sách thành công!');
                                         res.redirect('/admin/book/list');
                                     })
+                                    .catch(err => {
+                                        errorHandler(req, res, 'Sửa thông tin sách không thành công!!!');
+                                    })
+                            })
+                            .catch(err => {
+                                errorHandler(req, res, 'Sửa thông tin sách không thành công!!!');
                             })
                     })
                     .catch(err => {
