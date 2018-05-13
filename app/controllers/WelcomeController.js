@@ -24,7 +24,8 @@ router.get('/', (req, res) => {
         res.render('user/index', {
             genres: genres,
             books: books,
-            pages: pages
+            pages: pages,
+            page: 'HOME'
         });
     })
 })
@@ -48,7 +49,8 @@ router.get('/theloai', (req, res) => {
         res.render('user/index', {
             genres: genres,
             books: books,
-            pages: pages
+            pages: pages,
+            page: 'THELOAI'
         });
     })
 })
@@ -77,7 +79,8 @@ router.get('/theloai/:MA_THELOAI', (req, res) => {
             genres: genres,
             books: books,
             pages: pages,
-            genre: result.TEN
+            genre: result.TEN,
+            page: 'THELOAI'
         });
     })
 })

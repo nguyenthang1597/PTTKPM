@@ -1,14 +1,26 @@
 <div id="templatemo_menu">
     <ul>
+        {{#ifCond page '==' 'HOME'}}
         <li>
             <a href="/" class="current">Home</a>
         </li>
+        {{else}}
+        <li>
+            <a href="/">Home</a>
+        </li>
+        {{/ifCond}}
         <li>
             <a href="#">Sách</a>
         </li>
+        {{#ifCond page '==' 'THELOAI'}}
+        <li>
+            <a href="/theloai" class="current">Thể loại</a>
+        </li>
+        {{else}}
         <li>
             <a href="/theloai">Thể loại</a>
         </li>
+        {{/ifCond}}
         <li>
             <a href="#">Tác giả</a>
         </li>
