@@ -1,0 +1,14 @@
+
+.cotPhai img {
+    width: 250px;
+    height: 250px;
+    border: 2px solid blue;
+    margin-top: 23px;
+    padding: 3px;
+}
+
+.cotPhai button.btn.btn-default {
+	display:  block;
+    margin-left:  82px;
+    margin-top:  20px;
+}

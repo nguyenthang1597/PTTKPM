@@ -20,30 +20,7 @@ router.get('/list', (req, res) => {
         })
 })
 
-router.get('/profile-edit', (req, res) => {
 
-    if (req.user.ID) {
-        Librarian.getById(req.user.ID)
-            .then(results => {
-                console.log(results);
-                res.render('admin/librarian/profile-edit', {
-                    layout: 'main-admin',
-                    librarian: results,
-                    title: 'Quản lý thủ thư',
-                    heading: 'Chỉnh sửa thông tin thủ thư'
-                })
-            })
-    }
-    else
-
-
-    res.render('admin/librarian/profile-edit', {
-        layout: 'main-admin',
-        librarian: null,
-        title: 'Quản lý thủ thư',
-        heading: 'Chỉnh sửa thông tin thủ thư'
-    })
-})
 
 router.post('/profile-edit', (req, res) => {
     console.log(req.body.NGAYSINH);
@@ -57,7 +34,7 @@ router.post('/profile-edit', (req, res) => {
         SDT: req.body.SDT
     }
     if (req.user.ID) {
-        
+
         librarian.MA_THUTHU = req.user.ID;
         Librarian.updateTHUTHU(librarian)
             .then(results => {
@@ -68,8 +45,7 @@ router.post('/profile-edit', (req, res) => {
                 req.flash('message', 'Chỉnh sửa không thành công');
                 res.redirect('/admin');
             })
-    }
-    else {
+    } else {
         console.log("2");
         Librarian.addTHUTHU(librarian)
             .then(results => {
@@ -95,5 +71,18 @@ router.post('/profile-edit', (req, res) => {
     }
 })
 
+
+router.post('/delete', (req, res) => {
+    var MA_THUTHU = req.body.MA_THUTHU;
+    console.log(MA_THUTHU);
+    Librarian.deleteById(MA_THUTHU)
+        .then(result => {
+            res.send('Xoá thành công!!!');
+        })
+        .catch(err => {
+            res.send();
+            console.log(err);
+        })
+})
 
 module.exports = router;

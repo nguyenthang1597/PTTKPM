@@ -1,0 +1,99 @@
+<div class="main-content">
+
+    {{>header-admin}}
+
+    <hr /> {{>breadcrumb-admin}}
+    <h2>{{heading}}</h2>
+    <form method="POST" class="form-horizontal form-groups-bordered">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-primary" data-collapsed="0">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            {{heading}}
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Username</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="USERNAME" value="{{account.USERNAME}}" id="USERNAME" class="form-control" placeholder="Tài khoản" required readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Loại tài khoản</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" name="ROLE">
+                                    {{#ifCond user.ROLE '==' 2}}
+                                    <option value="1">Thủ thư</option>
+                                    {{/ifCond}} {{#ifCond user.ROLE '==' 3}}
+                                    <option value="1">Thủ thư</option>
+                                    <option value="2">Admin</option>
+                                    {{/ifCond}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Khoá tài khoản</label>
+                            <div class="col-sm-5">
+                                <div class="bs-example">
+                                    <div class="make-switch" data-on="primary" data-off="info">
+                                        {{#ifCond account.active '==' 0}}
+                                        <input type="checkbox" name="active" checked> {{else}}
+                                        <input type="checkbox" name="active"> {{/ifCond}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-8" style="text-align: center;">
+                    <div class="bs-example">
+                        <button type="submit" class="btn btn-green btn-icon">
+                            Sửa thông tin
+                            <i class="entypo-check"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+    </form>
+    </div>
+
+    <br />
+
+</div>
+
+
+
+
+
+
+{{#section 'scripts'}}
+<!-- Imported styles on this page -->
+
+<!-- Bottom scripts (common) -->
+<script src="/assets/admin/js/gsap/TweenMax.min.js"></script>
+<script src="/assets/admin/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="/assets/admin/js/bootstrap.js"></script>
+<script src="/assets/admin/js/resizeable.js"></script>
+<script src="/assets/admin/js/neon-api.js"></script>
+<script src="/assets/admin/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+
+<!-- JavaScripts initializations and stuff -->
+<script src="/assets/admin/js/neon-custom.js"></script>
+
+<!-- Imported scripts on this page -->
+<script src="/assets/admin/js/bootstrap-switch.min.js"></script>
+
+<!-- Demo Settings -->
+<script src="/assets/admin/js/neon-demo.js"></script>
+
+<script type="text/javascript" src="/assets/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/assets/ckeditor/adapters/jquery.js"></script> {{/section}}

@@ -1,0 +1,82 @@
+body {
+}
+
+input[type=text] {
+    width: 130px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 2px solid #8c6538;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #8c6538;
+    background-image: url('../images/iconsearch.png');
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    position:  relative;
+    top: -7px;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 40%;
+}
+
+.container.myContainer {
+    clear: both;
+    width:  960px;
+    background-color:  #181818;
+    margin-right: 184px;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+
+.box {  
+    width: 196px;
+    height: 350px;
+    border:  1px solid #b7b648;
+    display:  inline-block;
+    margin: 10px;
+    font-size: 14px;
+}
+
+    .box img {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 5px;
+    }
+
+    .thongtin p {
+        font-size: 12px;
+        margin: 0px;
+        padding-left: 8px !important;
+    }
+
+    .box:hover {
+        border: 1px solid #666520;
+    }
+
+#templatemo_content #templatemo_content_right {
+    float: right;
+    width: 670px;
+    height:  100%;
+}
+
+/*  Css phần subpage */
+.tomtatthongtin {
+    margin-left: 173px;
+}
+
+.ttchitiet {
+    display:  block;
+    margin-top: 100px;
+}

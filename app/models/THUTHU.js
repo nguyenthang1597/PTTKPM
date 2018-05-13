@@ -4,7 +4,7 @@ var mysql = require('../../config/mysql');
 var THUTHU = {
     getAll: () => {
         return new Promise((resolve, reject) => {
-            var query = 'select * from THUTHU';
+            var query = `select MA_THUTHU, TEN, DATE_FORMAT(NGAYSINH, '%d/%m/%Y') as NGAYSINH, GIOITINH, DIACHI, EMAIL, SDT from THUTHU`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
@@ -27,7 +27,8 @@ var THUTHU = {
     },
     addTHUTHU: (THUTHU) => {
         return new Promise((resolve, reject) => {
-            var query = `insert into THUTHU (TEN, NGAYSINH, GIOITINH, DIACHI, EMAIL, SDT) values ('${THUTHU.TEN}','${THUTHU.NGAYSINH}',${THUTHU.GIOITINH},'${THUTHU.DIACHI}','${THUTHU.EMAIL}','${THUTHU.SDT}')`;
+            var query = `insert into THUTHU (TEN, NGAYSINH, GIOITINH, DIACHI, EMAIL, SDT) values ('${THUTHU.TEN}','${THUTHU.NGAYSINH}','${THUTHU.GIOITINH}','${THUTHU.DIACHI}','${THUTHU.EMAIL}','${THUTHU.SDT}')`;
+            console.log(query);
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);

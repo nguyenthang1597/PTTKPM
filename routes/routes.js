@@ -5,19 +5,21 @@ var BookController = require('../app/controllers/BookController');
 var GenreController = require('../app/controllers/GenreController');
 var PublisherController = require('../app/controllers/PublisherController');
 var LibrarianController = require('../app/controllers/LibrarianController');
-
+var AdminAccountController = require('../app/controllers/AdminAccountController');
+var UserAccountController = require('../app/controllers/UserAccountController');
+var WelcomController = require('../app/controllers/WelcomeController');
 var mw = require('../config/middleware');
 module.exports = (app) => {
-    app.get('/', (req, res) => {
-        res.render('index', {title: 'Express'})
-    })
-
+ 
     app.use('/admin', AdminController);
 
-    app.use('/admin/author', mw.isLoggedInAdmin, AuthorController);
-    app.use('/admin/book', mw.isLoggedInAdmin, BookController);
-    app.use('/admin/genre', mw.isLoggedInAdmin, GenreController);
-    app.use('/admin/publisher', mw.isLoggedInAdmin, PublisherController);
+    app.use('/admin/author', mw.isLoggedInAdmin, mw.isThuThuAccess, AuthorController);
+    app.use('/admin/book', mw.isLoggedInAdmin, mw.isThuThuAccess, BookController);
+    app.use('/admin/genre', mw.isLoggedInAdmin, mw.isThuThuAccess, GenreController);
+    app.use('/admin/publisher', mw.isLoggedInAdmin, mw.isThuThuAccess, PublisherController);
     app.use('/admin/librarian', mw.isLoggedInAdmin, mw.isSysAndAdminAccess, LibrarianController);
+    app.use('/admin/account', mw.isLoggedInAdmin, mw.isSysAndAdminAccess, AdminAccountController);
+    app.use('/admin/user-account', mw.isLoggedInAdmin, mw.isSysAndAdminAccess, UserAccountController);
 
+    app.use('/', WelcomController);
 }         

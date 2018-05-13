@@ -34,7 +34,17 @@ var DSTACGIA = {
             })
         });
     },
-    
+    delete: (info) => {
+        return new Promise((resolve, reject) => {
+            var query = `delete from DSTACGIA where MA_SACH = '${info.MA_SACH}'`;
+            mysql.query(query, (err, results, fields) => {
+                if(err)
+                    reject(err);
+                else
+                    resolve(results);
+            })
+        });
+    }
 }
 
 

@@ -32,7 +32,7 @@ var errorHandler = (req, res, message) => {
         }
     }
 
-    req.flash('BookMessage', message);
+    req.flash('errorMessage', message);
     res.redirect('/admin/book/list');
 }
 
@@ -59,18 +59,18 @@ router.get('/edit/:id', (req, res) => {
                     Author.getAll()
                         .then(authors => {
                             Genre.getAll()
-                            .then(genres => {
-                                res.render('admin/book/edit', {
-                                    layout: 'main-admin',
-                                    title: 'Quản lý sách',
-                                    heading: 'Sửa thông tin sách',
-                                    message: req.flash('BookMessage')[0],
-                                    book: book,
-                                    publishers: publishers,
-                                    authors: authors,
-                                    genres: genres
+                                .then(genres => {
+                                    res.render('admin/book/edit', {
+                                        layout: 'main-admin',
+                                        title: 'Quản lý sách',
+                                        heading: 'Sửa thông tin sách',
+                                        message: req.flash('BookMessage')[0],
+                                        book: book,
+                                        publishers: publishers,
+                                        authors: authors,
+                                        genres: genres
+                                    })
                                 })
-                            })
                         })
                 })
         })
@@ -203,17 +203,19 @@ router.post('/add', (req, res) => {
                                 req.flash('successMessage', 'Thêm sách mới thành công!!!');
                                 res.redirect('/admin/book/list');
                             })
-                            .catch(err => {
+                            .catch(err => {console.log(err);
                                 Book.deleteById(result1.insertId);
                                 errorHandler(req, res, 'Thêm sách mới không thành công!!!');
                             })
                     })
                     .catch(err => {
+                        console.log(err);
                         Book.deleteById(result1.insertId);
                         errorHandler(req, res, 'Thêm sách mới không thành công!!!');
                     })
             })
             .catch(err => {
+                console.log(err);
                 errorHandler(req, res, 'Thêm sách mới không thành công!!!');
             })
     })
@@ -222,6 +224,9 @@ router.post('/add', (req, res) => {
 
 
 router.post('/delete', (req, res) => {
+    let info;
+    let id = req.body.id;
+    let MA_TACGIA;
     if (req.xhr || req.header.accept.indexOf('json') > -1) {
         Book.getById(req.body.id)
             .then(result => {
@@ -230,26 +235,22 @@ router.post('/delete', (req, res) => {
                     fs.unlinkSync(url_del)
                 }
             })
-        Book.getAuthor(req.body.id)
+        Book.getAuthor(id)
             .then(result => {
-                var info = {
-                    MA_SACH: req.body.id,
-                    MA_TACGIA: result.MA_TACGIA
-                }
-                Book_Author.delete(info)
-                    .then(result1 => {
-                        Book.deleteById(req.body.id)
-                            .then(result => {
-                                res.send('Xoá sách thành công');
-                            })
-                            .catch(err => {
-                                console.log(err);
-                                res.end();
-                            })
-                    })
-                    .catch(err => {
-                        res.send();
-                    })
+                MA_TACGIA = result.MA_TACGIA
+            })
+        Book_Author.deleteById(id)
+            .then(result => {
+                return Book_Genre.deleteById(id)
+            })
+            .then(result => {
+                return Book.deleteById(id)
+            })
+            .then(result => {
+                res.send('Xoá thành công!!!');
+            })
+            .catch(err => {
+                res.send();
             })
     }
 })

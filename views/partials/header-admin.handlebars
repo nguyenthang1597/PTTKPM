@@ -11,21 +11,24 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="/assets/admin/images/profilePicture.png" alt="" class="img-circle" width="44" /> {{user.USERNAME}}
                 </a>
-                {{#ifCond user.ROLE '==' 1}}
+
                 <ul class="dropdown-menu">
-
-                    <!-- Reverse Caret -->
-                    <li class="caret"></li>
-
-                    
+                    {{#ifCond user.ROLE '==' 1}} 
                     <li>
-                        <a href="/admin/librarian/profile-edit">
+                        <a href="/admin/profile-edit">
                             <i class="entypo-user"></i>
-                            Edit Profile
+                            Chỉnh sửa thông tin
+                        </a>
+                    </li>
+                    {{/ifCond}}
+                    <li>
+                        <a href="/admin/account/changepassword">
+                            <i class="entypo-key"></i>
+                            Đổi mật khẩu
                         </a>
                     </li>
                 </ul>
-                {{/ifCond}}                   
+
             </li>
         </ul>
     </div>

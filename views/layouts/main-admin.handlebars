@@ -85,6 +85,7 @@
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
+                    {{#ifCond user.ROLE '==' 1}}
                     <li class="has-sub">
                         <a href="#">
                             <i class="entypo-layout"></i>
@@ -174,6 +175,9 @@
                             </li>
                         </ul>
                     </li>
+                    {{/ifCond}}
+
+
                     {{#ifCond user.ROLE '>' 1}}
                     <li class="has-sub">
                         <a href="#">
@@ -186,9 +190,35 @@
                                     <span class="title">Danh sách Thủ thư</span>
                                 </a>
                             </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="#">
+                            <i class="entypo-layout"></i>
+                            <span class="title">Quản lý tài khoản</span>
+                        </a>
+                        <ul>
                             <li>
-                                <a href="">
-                                    <span class="title">Thêm thủ thư</span>
+                                <a href="/admin/account/list">
+                                    <span class="title">Danh sách Tài khoản</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/account/add">
+                                    <span class="title">Thêm tài khoản</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="#">
+                            <i class="entypo-layout"></i>
+                            <span class="title">Quản lý tài khoản người dùng</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/admin/user-account/list">
+                                    <span class="title">Danh sách Tài khoản</span>
                                 </a>
                             </li>
                         </ul>
