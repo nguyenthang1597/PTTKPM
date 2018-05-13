@@ -15,11 +15,11 @@ Hướng dẫn cấu hình đồ án
 * B4: Chọn database vừa tạo ở Default Target Scheama và nhấn Start Import
 ##  Cấu hình project
 * B1: Mở thư mục project, mở terminal và thực hiện lệnh *npm install* để cời các package
-* B2: Tạo file có tên '.env', sau đó ghi nội dung theo cấu trúc sau:
-    - PORT: *port để chạy project*
-    - DBHOST: *host của database (localhost)*
-    - DBUSER: *tên tài khoản đăng nhập MySQL*
-    - DBPASS: *mật khẩu của tài khoản*
-    - DATABASE: *tên database tạo ở B1 cấu hình database*
+* B2: Mở file .env, sau đó ghi nội dung theo cấu trúc của file:
+    - PORT = *port để chạy project*
+    - DBHOST = *host của database (localhost)*
+    - DBUSER = *tên tài khoản đăng nhập MySQL*
+    - DBPASS = *mật khẩu của tài khoản*
+    - DATABASE = *tên database tạo ở B1 cấu hình database*
 * B3: Mở terminal và ghi lệnh *node app* để tiến hành chạy project
 * B4: Vào link *http://localhost:PORT* (với PORT tạo ở B2) để chạy project
