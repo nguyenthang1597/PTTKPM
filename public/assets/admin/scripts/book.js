@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     $('.deletebook').on('click', function () {
         if (window.confirm('Bạn có chắc chắn muốn xoá?')) {
-            var id = $('.deletebook').parent().parent().find('td#id')[0].innerText;
+            var id = $(this).parent().parent().find('td#id')[0].innerText;
             var url = '/admin/book/delete';
             var target = $(this).parent().parent();
             $.ajax({
@@ -24,8 +24,9 @@ $(document).ready(function () {
             return false;
     })
 
-    $('input#ishide').change(function () {
-        var id = $('.deletebook').parent().parent().find('td#id')[0].innerText;
+    $('input.ishide').change(function () {
+        var id = $(this).parent().parent().parent().parent().find('td#id')[0].innerText
+        console.log(id);
         var hide;
         var url = '/admin/book/update-visible';
         if (this.checked) {
@@ -47,8 +48,8 @@ $(document).ready(function () {
             }
         });
     });
-    $('input#ishighlight').change(function () {
-        var id = $('.deletebook').parent().parent().find('td#id')[0].innerText;
+    $('input.ishighlight').change(function () {
+        var id = $(this).parent().parent().parent().parent().find('td#id')[0].innerText
         var highlight;
         var url = '/admin/book/update-highlight';
         if (this.checked) {

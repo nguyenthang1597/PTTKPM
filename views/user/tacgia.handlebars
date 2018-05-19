@@ -7,42 +7,24 @@
     </div>
     <!-- end of header -->
     <div id="templatemo_content">
-        <div id="templatemo_content_left">
-            <div class="templatemo_content_left_section">
-                <h1>Thể loại</h1>
-                {{#each genres}}
-                <ul>
-                    <li>
-                        <a href="/theloai/{{MA_THELOAI}}">{{TEN}}</a>
-                    </li>
-                </ul>
-                {{/each}}
-            </div>
-        </div>
-        
+        <div id="templatemo_content_right_author">
 
-        <div id="templatemo_content_right">
-
-            <h1>Danh sách theo thể loại: {{genre}}</h1>
+            <h1>Danh sách tác giả</h1>
 
             <div class="danhsach">
-                {{#each books}}
+                {{#each authors}}
                 <div class="row">
                     {{#each this}}
-                    <div class="box">
-                        <img src="/upload/book/{{picture}}">
+                    <div class="box_author">
+                        <img src="/upload/author/{{picture}}">
                         <div class="thongtin">
                             <p>{{TEN}}</p>
-                            <p>Thể loại: {{THELOAI}}</p>
-                            <p>Tác giả: {{TACGIA}}</p>
-                            <p>Số lượng sách còn: {{SOLUONGCONLAI}}</p>
                         </div>
                     </div>
                     {{/each}}
                 </div>
                 {{/each}} 
             </div>
-            <!-- End danh sách các sách có trong thư viện -->
             <div class="cleaner_with_height">&nbsp;</div>
             <div class="pagination">
                 <a href="#">&laquo;</a>
@@ -58,7 +40,7 @@
     </div>
     <!-- end of content -->
 
-    {{>user-footer}}
+   {{>user-footer}}
     <!-- end of footer -->
 
 </div>

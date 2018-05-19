@@ -14,6 +14,18 @@ var TACGIA = {
             });
         });
     },
+    getAllIndex: () => {
+        return new Promise((resolve, reject) => {
+            var query = 'select * from TACGIA where isHide = 0';
+            mysql.query(query, (err, result, fields) => {
+                if (err)
+                    reject(err);
+                else {
+                    resolve(result);
+                }
+            });
+        });
+    },
     getById: (id) => {
         return new Promise((resolve, reject) => {
             var query = `select * from TACGIA where MA_TACGIA = '${id}'`;
@@ -30,9 +42,9 @@ var TACGIA = {
         return new Promise((resolve, reject) => {
             var query = '';
             if (TACGIA.TUOI)
-                query = `insert into TACGIA (TEN, TUOI, THONGTIN) values ('${TACGIA.TEN}', '${TACGIA.TUOI}' ,'${TACGIA.THONGTIN}')`;
+                query = `insert into TACGIA (TEN, TUOI, THONGTIN, isHide, picture) values ('${TACGIA.TEN}', '${TACGIA.TUOI}' ,'${TACGIA.THONGTIN}', '0', '${TACGIA.picture}')`;
             else
-                query = `insert into TACGIA (TEN, TUOI, THONGTIN) values ('${TACGIA.TEN}', null ,'${TACGIA.THONGTIN}')`;
+                query = `insert into TACGIA (TEN, TUOI, THONGTIN, isHide, picture) values ('${TACGIA.TEN}', null ,'${TACGIA.THONGTIN}', '0', '${TACGIA.picture}')`;
             console.log(query);
             mysql.query(query, (err, result, fields) => {
                 if (err)
@@ -46,9 +58,9 @@ var TACGIA = {
         return new Promise((resolve, reject) => {
             var query = '';
             if (TACGIA.TUOI)
-                query = `update TACGIA set TEN = '${TACGIA.TEN}', TUOI = ${TACGIA.TUOI}, THONGTIN = '${TACGIA.THONGTIN}' where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
+                query = `update TACGIA set TEN = '${TACGIA.TEN}', TUOI = ${TACGIA.TUOI}, THONGTIN = '${TACGIA.THONGTIN}', isHide = '${TACGIA.isHide}', picture = '${TACGIA.picture}' where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
             else
-                query = `update TACGIA set TEN = '${TACGIA.TEN}', THONGTIN = '${TACGIA.THONGTIN}' where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
+                query = `update TACGIA set TEN = '${TACGIA.TEN}', THONGTIN = '${TACGIA.THONGTIN}', isHide = '${TACGIA.isHide}','${TACGIA.picture}'  where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
             console.log(query);
             mysql.query(query, (err, result, fields) => {
                 if (err)
@@ -69,6 +81,17 @@ var TACGIA = {
                     resolve(result);
             });
         })
+    },
+    hide: (info) => {
+        return new Promise((resolve, reject) => {
+            var query = `update TACGIA set isHide = '${info.isHide}' where MA_TACGIA = '${info.MA_TACGIA}'`
+            mysql.query(query, (err, result, fields) => {
+                if (err)
+                    reject(err);
+                else
+                    resolve(result);
+            });
+        });
     }
 }
 

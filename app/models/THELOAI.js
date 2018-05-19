@@ -13,6 +13,18 @@ var THELOAI = {
             });
         });
     },
+    getAllIndex: () => {
+        return new Promise((resolve, reject) => {
+            var query = 'select * from THELOAI where isHide = 0';
+            mysql.query(query, (err, result, fields) => {
+                if (err)
+                    reject(err);
+                else {
+                    resolve(result);
+                }
+            });
+        });
+    },
     getById: (id) => {
         return new Promise((resolve, reject) => {
             var query = `select * from THELOAI where MA_THELOAI = '${id}'`;
@@ -26,7 +38,7 @@ var THELOAI = {
     },
     addTHELOAI: (THELOAI) => {
         return new Promise((resolve, reject) => {
-            var query = `insert into THELOAI (TEN) values ('${THELOAI.TEN}')`;
+            var query = `insert into THELOAI (TEN, isHide) values ('${THELOAI.TEN}', '0')`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
@@ -37,7 +49,7 @@ var THELOAI = {
     },
     updateTHELOAI: (THELOAI) => {
         return new Promise((resolve, reject) => {
-            var query = `update THELOAI set TEN = '${THELOAI.TEN}' where MA_THELOAI = '${THELOAI.MA_THELOAI}'`;
+            var query = `update THELOAI set TEN = '${THELOAI.TEN}', isHide = '${THELOAI.isHide}' where MA_THELOAI = '${THELOAI.MA_THELOAI}'`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
@@ -56,8 +68,18 @@ var THELOAI = {
                     resolve(result);
             });
         });
+    },
+    hide: (info) => {
+        return new Promise((resolve, reject) => {
+            var query = `update THELOAI set isHide = '${info.isHide}' where MA_THELOAI = '${info.MA_THELOAI}'`;
+            mysql.query(query, (err, result, fields) => {
+                if (err)
+                    reject(err);
+                else
+                    resolve(result);
+            });
+        });
     }
-
 }
 
 module.exports = THELOAI;

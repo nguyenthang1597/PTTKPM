@@ -4,7 +4,7 @@
 
     <hr /> {{>breadcrumb-admin}}
     <h2>{{heading}}</h2>
-    <form method="POST" class="form-horizontal form-groups-bordered">
+    <form method="POST" class="form-horizontal form-groups-bordered" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-12">
 
@@ -26,6 +26,23 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">Ảnh</label>
+                            <div class="col-sm-5">
+                                {{#if author.picture}}
+                                <img src="/upload/author/{{author.picture}}" width="400" height="auto" alt=""> {{else}}
+                                <input type="file" name="picture" class="form-control"> {{/if}}
+                            </div>
+                        </div>
+
+                        {{#if author.picture}}
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Chọn ảnh khác</label>
+                            <div class="col-sm-5">
+                                <input type="file" name="picture" class="form-control">
+                            </div>
+                        </div>
+                        {{/if}}
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">Tuổi</label>
 
                             <div class="col-sm-8">
@@ -34,7 +51,22 @@
 
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Ẩn tác giả</label>
 
+                            <div class="col-sm-5">
+
+                                <div class="bs-example">
+                                    <div class="make-switch" data-on="primary" data-off="info">
+                                        {{#if author.isHide}}
+                                        <input type="checkbox" name="isHide" checked> {{else}}
+                                        <input type="checkbox" name="isHide"> {{/if}}
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Thông tin</label>
 

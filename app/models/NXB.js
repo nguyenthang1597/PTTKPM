@@ -25,7 +25,7 @@ var NXB = {
     },
     addNXB: (NXB) => {
         return new Promise((resolve, reject) => {
-            var query = `insert into NHAXUATBAN(TEN, THONGTIN) values ('${NXB.TEN}', '${NXB.THONGTIN}')`
+            var query = `insert into NHAXUATBAN(TEN, THONGTIN, isHide) values ('${NXB.TEN}', '${NXB.THONGTIN}', '0')`
             mysql.query(query, (err, result, fields) => {
                 if(err)
                     reject(err);    
@@ -36,7 +36,7 @@ var NXB = {
     },
     updateNXB: (NXB) => {
         return new Promise((resolve, reject) => {
-            var query = `update NHAXUATBAN set MA_NXB = '${NXB.MA_NXB}', TEN = '${NXB.TEN}', THONGTIN = '${NXB.THONGTIN}' where MA_NXB = '${NXB.MA_NXB}'`
+            var query = `update NHAXUATBAN set MA_NXB = '${NXB.MA_NXB}', TEN = '${NXB.TEN}', THONGTIN = '${NXB.THONGTIN}', isHide = '${NXB.isHide}' where MA_NXB = '${NXB.MA_NXB}'`
             mysql.query(query, (err, result, fields) => {
                 if(err)
                     reject(err);
@@ -48,6 +48,17 @@ var NXB = {
     deleteByID: (id) => {
         return new Promise((resolve, reject) => {
             var query = `delete from NHAXUATBAN where MA_NXB = '${id}'`;
+            mysql.query(query, (err, result, fields) => {
+                if(err)
+                    reject(err);
+                else
+                    resolve(result);
+            });
+        });
+    },
+    hide: (info) => {
+        return new Promise((resolve, reject) => {
+            var query = `update NHAXUATBAN set isHide = '${info.isHide}' where MA_NXB = '${info.MA_NXB}'`;
             mysql.query(query, (err, result, fields) => {
                 if(err)
                     reject(err);

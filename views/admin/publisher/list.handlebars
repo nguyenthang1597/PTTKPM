@@ -7,8 +7,7 @@
 
     {{#if successMessage}}
     <div class="alert alert-success">{{successMessage}}</div>
-    {{/if}}
-    {{#if errorMessage}}
+    {{/if}} {{#if errorMessage}}
     <div class="alert alert-danger">{{errorMessage}}</div>
     {{/if}}
     <div class="row">
@@ -30,7 +29,7 @@
                             <tr>
                                 <th>Mã Nhà Xuất bản</th>
                                 <th>Tên Nhà xuất bản</th>
-                                
+                                <th>Ẩn</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -39,7 +38,13 @@
                             <tr class="odd gradeX">
                                 <td id="id">{{MA_NXB}}</td>
                                 <td>{{TEN}}</td>
-
+                                <td class="center">
+                                    <div class="make-switch" data-on="primary" data-off="info">
+                                        <input type="hidden" id="id" value="{{isHide}}"> {{#ifCond isHide '===' 1}}
+                                        <input type="checkbox" class="ishide" id="ishide" name="isHide" checked> {{else}}
+                                        <input type="checkbox" class="ishide" id="ishide" name="isHide"> {{/ifCond}}
+                                    </div>
+                                </td>
                                 <td class="center">
                                     <a href="/admin/publisher/edit/{{MA_NXB}}" class="btn btn-primary btn-sm btn-icon icon-left">
                                         <i class="entypo-pencil"></i>

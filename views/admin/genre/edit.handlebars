@@ -25,7 +25,24 @@
 
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Ẩn tác giả</label>
+
+                            <div class="col-sm-5">
+
+                                <div class="bs-example">
+                                    <div class="make-switch" data-on="primary" data-off="info">
+                                        {{#if genre.isHide}}
+                                        <input type="checkbox" name="isHide" checked> {{else}}
+                                        <input type="checkbox" name="isHide"> {{/if}}
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
 

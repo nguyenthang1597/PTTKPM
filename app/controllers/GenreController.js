@@ -26,7 +26,8 @@ router.get('/add', (req, res) => {
 
 router.post('/add', (req, res) => {
     var genre = {
-        TEN: req.body.TEN
+        TEN: req.body.TEN,
+        isHide: req.body.isHide
     }
 
     THELOAI.addTHELOAI(genre)
@@ -56,7 +57,8 @@ router.get('/edit/:id', (req, res) => {
 router.post('/edit/:id', (req, res) => {
     var genre = {
         MA_THELOAI: req.params.id,
-        TEN: req.body.TEN
+        TEN: req.body.TEN,
+        isHide: req.body.isHide ? 1 : 0
     }
     THELOAI.updateTHELOAI(genre)
     .then(result => {
@@ -74,6 +76,20 @@ router.post('/delete', (req, res) => {
     THELOAI.deleteById(req.body.id)
     .then(result => {
         res.send('Xoá thành công!!!');
+    })
+    .catch(err => {
+        res.send();
+    })
+})
+
+router.post('/update-visible', (req,res) =>{
+    var info = {
+        MA_THELOAI: req.body.id,
+        isHide: req.body.hide
+    }
+    THELOAI.hide(info)
+    .then(result => {
+        res.send('Thanh cong!!!');
     })
     .catch(err => {
         res.send();

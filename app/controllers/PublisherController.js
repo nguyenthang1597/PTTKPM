@@ -58,10 +58,10 @@ router.post('/edit/:id', (req, res) => {
     var publisher = {
         MA_NXB: req.params.id,
         TEN: req.body.TEN,
-        THONGTIN: req.body.THONGTIN
+        THONGTIN: req.body.THONGTIN,
+        isHide: req.body.isHide ? 1 : 0
     }
 
-    console.log(publisher);
     Publisher.updateNXB(publisher)
     .then(result => {
         req.flash('successMessage', 'Chỉnh sửa thành công!!!');
@@ -73,5 +73,17 @@ router.post('/edit/:id', (req, res) => {
     })
 })
 
-
+router.post('/update-visible', (req, res) => {
+    var info = {
+        MA_NXB: req.body.id,
+        isHide: req.body.hide
+    }
+    Publisher.hide(info)
+    .then(result => {
+        res.send('Thanh cong!!!');
+    })
+    .catch(err => {
+        res.send();
+    })
+})
 module.exports = router;

@@ -18,10 +18,42 @@
                 </ul>
                 {{/each}}
             </div>
+            <div class="templatemo_content_left_section">
+                <h1>Tác giả</h1>
+                {{#each authors}}
+                <ul>
+                    <li>
+                        <a href="/tacgia/{{MA_TACGIA}}">{{TEN}}</a>
+                    </li>
+                </ul>
+                {{/each}}
+            </div>
         </div>
-        
+
 
         <div id="templatemo_content_right">
+
+            <h1>Nổi bật</h1>
+            <div class="slideshow-container">
+
+                <!-- Full-width images with number and caption text -->
+                {{#each highlights}}
+                    <div class="mySlides fade">
+                        <img src="/upload/book/{{picture}}" style="width:100%">
+                        <div class="text">{{TEN}}</div>
+                    </div>
+                {{/each}}
+                
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br>
+
+
+
+
 
             <h1>Danh sách</h1>
 
@@ -29,6 +61,7 @@
                 {{#each books}}
                 <div class="row">
                     {{#each this}}
+                    <a href="/sach/{{MA_SACH}}">
                     <div class="box">
                         <img src="/upload/book/{{picture}}">
                         <div class="thongtin">
@@ -38,9 +71,10 @@
                             <p>Số lượng sách còn: {{SOLUONGCONLAI}}</p>
                         </div>
                     </div>
+                    </a>
                     {{/each}}
                 </div>
-                {{/each}} 
+                {{/each}}
             </div>
             <!-- End danh sách các sách có trong thư viện -->
             <div class="cleaner_with_height">&nbsp;</div>
@@ -51,6 +85,8 @@
                 {{/each}}
                 <a href="#">&raquo;</a>
             </div>
+
+
         </div>
         <!-- end of content right -->
 
@@ -58,17 +94,12 @@
     </div>
     <!-- end of content -->
 
-    <div id="templatemo_footer">
-        <a href="subpage.html">Home</a> |
-        <a href="subpage.html">Search</a> |
-        <a href="#">FAQs</a> |
-        <a href="#">Contact Us</a>
-        <br /> Copyright © 2018
-        <a href="#">
-            <strong>Trần Văn Thanh - Nguyễn Hiếu Thắng</strong>
-        </a>
-    </div>
+   {{>user-footer}}
     <!-- end of footer -->
 
 </div>
 <!-- end of container -->
+{{#section 'scripts'}}
+<script src="/assets/user/scripts/index.js"></script>
+{{/section}}
+

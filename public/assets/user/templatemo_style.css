@@ -251,6 +251,15 @@ img {
 	background: url(images/templatemo_h1_bg.jpg);
 }
 
+#templatemo_content_right_author h1 {
+	padding: 10px;
+	margin: 0 0 20px 0;
+	font-size: 15px;
+	color: #cbc750;
+	background: url(images/templatemo_h1_bg.jpg);
+}
+
+
 #templatemo_content_right h2 {
 	padding: 0 0 0 0;
 	margin: 0 0 20px 0;

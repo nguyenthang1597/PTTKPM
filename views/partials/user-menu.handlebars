@@ -21,9 +21,16 @@
             <a href="/theloai">Thể loại</a>
         </li>
         {{/ifCond}}
+
+        {{#ifCond page '==' 'TACGIA'}}
         <li>
-            <a href="#">Tác giả</a>
+            <a href="/tacgia" class="current">Tác giả</a>
         </li>
+        {{else}}
+        <li>
+            <a href="/tacgia">Tác giả</a>
+        </li>
+        {{/ifCond}}
         <li>
             <a href="#">Quản lý</a>
         </li>

@@ -1,0 +1,80 @@
+<div id="templatemo_container">
+    {{>user-menu}}
+    <!-- end of menu -->
+
+    <div id="templatemo_header"></div>
+    <div id="templatemo_content">
+        <div id="templatemo_content_left">
+            <div class="templatemo_content_left_section">
+                <h1>Thể loại</h1>
+                <ul>
+                    <li>
+                        <a href="subpage.html">Thể Loại 1</a>
+                    </li>
+                    <li>
+                        <a href="subpage.html">Thể Loại 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Thể Loại 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Thể Loại 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Thể Loại 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Thể Loại 1.0</a>
+                    </li>
+                    <li>
+                        <a href="#">Thể Loại 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Thể Loại 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Thể Loại 1</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- end of content left -->
+
+        <div id="templatemo_content_right">
+
+            <h1>{{book.TEN}}
+                <span> - {{book.TACGIA}}</span>
+            </h1>
+            <div class="image_panel">
+                <img src="/upload/book/{{book.picture}}" alt="" width="150" height="200" />
+            </div>
+
+            <div class="tomtatthongtin">
+                {{!--
+                <h2>Read the lessons - Watch the videos - Do the exercises</h2> --}}
+                <ul>
+                    <li>Tác giả
+                        <a href="/tacgia/{{book.MA_TACGIA}}">{{book.TACGIA}}</a>
+                    </li>
+                    {{!--
+                    <li>January 2024</li> --}}
+                    <li>Thể loại: {{book.THELOAI}}</li>
+                    {{!--
+                    <li>Số trang: 498</li> --}} {{!--
+                    <li>ISBN 10: 0-496-91612-0 | ISBN 13: 9780492518154</li> --}}
+                </ul>
+            </div>
+            <div class="ttchitiet">
+                {{{book.CONTENT}}}
+            </div>
+
+
+            <div class="cleaner_with_height">&nbsp;</div>
+
+        </div>
+        <!-- end of content right -->
+        
+        <div class="cleaner_with_height">&nbsp;</div>
+    </div>
+    <!-- end of content -->
+</div>
