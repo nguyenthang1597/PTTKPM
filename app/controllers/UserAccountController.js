@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var UserAccount = require('../models/ACCUSER');
+var Reader = require('../models/DOCGIA');
 
 router.get('/list', (req, res) => {
     UserAccount.getAll()
@@ -48,4 +49,42 @@ router.post('/edit/:username', (req, res) => {
     })
 })
 
+router.get('/add', (req, res) => {
+    res.render('admin/user-account/add', {
+        layout: 'main-admin',
+        title: 'Quản lý tài khoản đọc giả',
+        heading: 'Thêm tài khoản mới'
+    })
+})
+
+router.post('/add', (req, res) => {
+    let readerID;
+    var account = {
+        USERNAME: req.body.USERNAME,
+        PASSWORD: req.body.PASSWORD
+    }
+    Reader.addDefault()
+    .then(result => {
+        console.log(result);
+        readerID = result.insertID;
+        return UserAccount.addNew(account);
+    })
+    .then(result => {
+        var info = {
+            USERNAME: account.USERNAME,
+            ID: readerID
+        }
+        return UserAccount.setID(info);
+    })
+    .then(result => {
+        req.flash('successMessage', 'Thêm tài khoản thành công!!!');
+        res.redirect('/admin/user-account/list');
+    })
+    .catch(err => {
+        req.flash('successMessage', 'Thêm tài khoản không thành công!!!');
+        res.redirect('/admin/user-account/list');
+    })
+    
+
+})
 module.exports = router;

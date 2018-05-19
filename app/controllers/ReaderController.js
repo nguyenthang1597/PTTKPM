@@ -8,7 +8,7 @@ router.get('/list', (req, res) => {
     Reader.getAll()
     .then(results => {
         res.render('admin/reader/list', {
-            layout: 'main-layout',
+            layout: 'main-admin',
             title: 'Quản lý đọc giả',
             heading: 'Danh sách đọc giả',
             readers: results,

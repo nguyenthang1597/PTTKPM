@@ -31,6 +31,8 @@ var DOCGIA = {
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
+                else
+                    resolve(result);
             });
         })
     },
@@ -40,6 +42,8 @@ var DOCGIA = {
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
+                else
+                    resolve(result);
             });
         });
     },
@@ -47,8 +51,21 @@ var DOCGIA = {
         return new Promise((resolve, reject) => {
             var query = `delete from DOCGIA where MA_DOCGIA = '${id}'`;
             mysql.query(query, (err, result, fields) => {
-                if(err)
+                if (err)
                     reject(err);
+                else
+                    resolve(result);
+            });
+        });
+    },
+    addDefault: () => {
+        return new Promise((resolve, reject) => {
+            var query = `insert into DOCGIA () values ()`
+            mysql.query(query, (err, result, fields) => {
+                if (err)
+                    reject(err);
+                else
+                    resolve(result);
             });
         });
     }

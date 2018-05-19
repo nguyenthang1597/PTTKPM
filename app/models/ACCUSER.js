@@ -33,6 +33,28 @@ var ACCUSER = {
                     resolve(results);
             })
         });
+    },
+    setID: (info) => {
+        return new Promise((resolve, reject) => {
+            var query = `update USERACC set ID = '${info.ID}' where USERNAME = '${info.USERNAME}'`
+            mysql.query(query, (err, results, filds) => {
+                if(err)
+                    reject(err);
+                else
+                    resolve(results);
+            })
+        });
+    },
+    addNew: (account) => {
+        return new Promise((resolve, reject) => {
+            var query = `insert into USERACC (USERNAME, PASSWORD) values ('${account.USERNAME}','${account.PASSWORD}')`
+            mysql.query(query, (err, results, filds) => {
+                if(err)
+                    reject(err);
+                else
+                    resolve(results);
+            })
+        });
     }
 }
 
