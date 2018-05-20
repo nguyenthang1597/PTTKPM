@@ -17,18 +17,23 @@
 
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Username</label>
-                            <div class="col-sm-8">
-                                <input type="text" name="USERNAME" value="" id="USERNAME" class="form-control" placeholder="Tài khoản" required>
+                            <label class="col-sm-3 control-label">Đọc giả</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" name="DOCGIA">
+                                    {{#each readers}}
+                                    <option value="{{MA_DOCGIA}}">{{TEN}}</option>
+                                    {{/each}}
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Password</label>
+                            <label class="col-sm-3 control-label">Hạn sử dụng</label>
                             <div class="col-sm-8">
-                                <input type="text" name="PASSWORD" value="" id="USERNAME" class="form-control" placeholder="Tài khoản" required>
+                                <input type="date" name="HSD" id="HSD" class="form-control" placeholder="Hạn sử dụng" required>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
 
@@ -76,4 +81,11 @@
 <script src="/assets/admin/js/neon-demo.js"></script>
 
 <script type="text/javascript" src="/assets/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="/assets/ckeditor/adapters/jquery.js"></script> {{/section}}
+<script type="text/javascript" src="/assets/ckeditor/adapters/jquery.js"></script>
+
+<script type="text/javascript">
+    CKEDITOR.replace('THONGTIN', {
+        "extraPlugins": 'imagebrowser',
+        "imageBrowser_listUrl": "/files"
+    });
+</script> {{/section}}

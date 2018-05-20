@@ -7,8 +7,9 @@
 
     {{#if successMessage}}
     <div class="alert alert-success">{{successMessage}}</div>
-    {{/if}} {{#if errorMessage}}
-    <div class="alert alert-danger">{{errorMessage}}</div>
+    {{/if}}
+    {{#if errorMessage}}
+    <div class="alert alert-success">{{errorMessage}}</div>
     {{/if}}
     <div class="row">
         <div class="col-md-12">
@@ -27,33 +28,26 @@
                     <table class="table table-bordered datatable" id="table-1">
                         <thead>
                             <tr>
-                                <th>Mã đọc giả</th>
+                                <th>Mã thẻ</th>
                                 <th>Tên đọc giả</th>
-                                <th>Tên sách</th>
-                                <th>Số lượng</th>
-                                <th>Thủ thư</th>
-                                <th>Tình trạng</th>
+                                <th>Ngày lập</th>
+                                <th>HSD</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each borrows}}
+                            {{#each cards}}
                             <tr class="odd gradeX">
-                                <td id="id">{{MA_DOCGIA}}</td>
+                                <td id="id">{{MA_THE}}</td>
                                 <td>{{TEN}}</td>
-                                <td>{{TENSACH}}</td>
-                                <td>{{SOLUONG}}</td>
-                                <td>{{TENTHUTHU}}</td>
+                                <td>{{NGAYLAP}}</td>
+                                <td>{{HSD}}</td>
                                 <td class="center">
-                                    {{#ifCond TINHTRANG '===' 1}} Đã trả {{else}} Chưa trả {{/ifCond}}
-                                </td>
-
-                                <td class="center">
-                                    <a href="/admin/genre/edit/{{MA_THELOAI}}" class="btn btn-primary btn-sm btn-icon icon-left">
+                                    <a href="/admin/card/edit/{{MA_THE}}" class="btn btn-primary btn-sm btn-icon icon-left">
                                         <i class="entypo-pencil"></i>
                                         Sửa
                                     </a>
-                                    <a href="javascript:void(0)" class="btn btn-danger btn-sm btn-icon icon-left deleteGenre">
+                                    <a href="javascript:void(0)" class="btn btn-danger btn-sm btn-icon icon-left deleteCard">
                                         <i class="entypo-cancel"></i>
                                         Xoá
                                     </a>
@@ -82,7 +76,7 @@
 
 
 <!-- Imported scripts on this page -->
-<script src="/assets/admin/scripts/genre.js"></script>
+<script src="/assets/admin/scripts/card.js"></script>
 
 
 

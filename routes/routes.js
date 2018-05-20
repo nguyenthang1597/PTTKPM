@@ -9,6 +9,8 @@ var AdminAccountController = require('../app/controllers/AdminAccountController'
 var UserAccountController = require('../app/controllers/UserAccountController');
 var WelcomController = require('../app/controllers/WelcomeController');
 var ReaderController = require('../app/controllers/ReaderController');
+var CardController = require('../app/controllers/CardController');
+var BorrowBookController = require('../app/controllers/BorrowBookController');
 
 var mw = require('../config/middleware');
 module.exports = (app) => {
@@ -22,6 +24,8 @@ module.exports = (app) => {
     app.use('/admin/librarian', mw.isLoggedInAdmin, mw.isSysAndAdminAccess, LibrarianController);
     app.use('/admin/account', mw.isLoggedInAdmin, mw.isSysAndAdminAccess, AdminAccountController);
     app.use('/admin/reader', mw.isLoggedInAdmin, mw.isThuThuAccess, ReaderController);
+    app.use('/admin/card', mw.isLoggedInAdmin, mw.isThuThuAccess, CardController);
+    app.use('/admin/borrow', mw.isLoggedInAdmin, mw.isThuThuAccess, BorrowBookController);
     app.use('/admin/user-account', mw.isLoggedInAdmin, mw.isThuThuAccess, UserAccountController);
 
     app.use('/', WelcomController);

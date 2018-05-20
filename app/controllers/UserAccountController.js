@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var UserAccount = require('../models/ACCUSER');
 var Reader = require('../models/DOCGIA');
+var bcrypt = require('bcrypt-nodejs');
 
 router.get('/list', (req, res) => {
     UserAccount.getAll()
@@ -61,12 +62,13 @@ router.post('/add', (req, res) => {
     let readerID;
     var account = {
         USERNAME: req.body.USERNAME,
-        PASSWORD: req.body.PASSWORD
+        PASSWORD: bcrypt.hashSync(req.body.PASSWORD, null)
     }
     Reader.addDefault()
     .then(result => {
         console.log(result);
-        readerID = result.insertID;
+        readerID = result.insertId;
+        console.log(readerID);
         return UserAccount.addNew(account);
     })
     .then(result => {
@@ -74,6 +76,7 @@ router.post('/add', (req, res) => {
             USERNAME: account.USERNAME,
             ID: readerID
         }
+        console.log(info);
         return UserAccount.setID(info);
     })
     .then(result => {
@@ -81,10 +84,11 @@ router.post('/add', (req, res) => {
         res.redirect('/admin/user-account/list');
     })
     .catch(err => {
-        req.flash('successMessage', 'Thêm tài khoản không thành công!!!');
+        console.log(err);
+        Reader.deleteById(readerID);
+        req.flash('errorMessage', 'Thêm tài khoản không thành công!!!');
         res.redirect('/admin/user-account/list');
     })
-    
-
 })
+
 module.exports = router;

@@ -47,7 +47,7 @@ var ACCUSER = {
     },
     addNew: (account) => {
         return new Promise((resolve, reject) => {
-            var query = `insert into USERACC (USERNAME, PASSWORD) values ('${account.USERNAME}','${account.PASSWORD}')`
+            var query = `insert into USERACC (USERNAME, PASSWORD, active) values ('${account.USERNAME}','${account.PASSWORD}', '1')`
             mysql.query(query, (err, results, filds) => {
                 if(err)
                     reject(err);
@@ -55,7 +55,7 @@ var ACCUSER = {
                     resolve(results);
             })
         });
-    }
+    },
 }
 
 module.exports = ACCUSER

@@ -196,10 +196,47 @@
                             </li>
                         </ul>
                     </li>
-                    {{/ifCond}}
-
-
-                    {{#ifCond user.ROLE '>' 1}}
+                    <li class="has-sub">
+                        <a href="#">
+                            <i class="entypo-layout"></i>
+                            <span class="title">Quản lý thẻ thư viện</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/admin/card/list">
+                                    <span class="title">Danh sách thẻ</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="/admin/card/add">
+                                    <span class="title">Thêm thẻ mới</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="#">
+                            <i class="entypo-layout"></i>
+                            <span class="title">Quản lý mượn sách</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/admin/borrow/list">
+                                    <span class="title">Danh sách mượn</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="/admin/borrow/add">
+                                    <span class="title">Cho mượn sách</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{/ifCond}} {{#ifCond user.ROLE '>' 1}}
                     <li class="has-sub">
                         <a href="#">
                             <i class="entypo-layout"></i>
