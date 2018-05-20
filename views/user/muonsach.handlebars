@@ -1,0 +1,100 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Mượn sách
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>
+                        <a href="#">Quản lý</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-edit"></i> Mượn sách
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        {{!-- <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" action="" method="get" accept-charset="utf-8">
+                    <div class="col-md-5">
+                        <input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="">
+                    </div>
+                    <div class="col-md-5">
+                        <select name="" class="form-control">
+                            <option value="" selected="true">Tên sách</option>
+                            <option value="">Thể loại</option>
+                            <option value="">Tác giả</option>
+                            <option value="">Nhà xuất bản</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-primary">Tìm kiếm</button>
+                    </div>
+                </form>
+            </div>
+
+        </div> --}}
+        <!-- /. Row thanh tìm kiếm-->
+
+        <hr>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Danh sách sách đã mượn</h3>
+            </div>
+        </div>
+        <!-- Head kq tim -->
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th id='tensach'>Tên Sách</th>
+                            <th id="theloai">Thể Loại</th>
+                            <th id="tacgia">Tác Giả</th>
+                            <th id="nxb">NXB</th>
+                            <th id="tinhtrang">Tình trạng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each books}}
+                        <tr>
+                            <td>{{TEN}}</td>
+                            <td>{{THELOAI}}</td>
+                            <td>{{TACGIA}}</td>
+                            <td>{{NXB}}</td>
+
+                            <td>
+                                {{#ifCond TINHTRANG '==' 1}}
+                                    Đã trả
+                                {{else}}
+                                    Chưa trả
+                                {{/ifCond}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Bang kết quả tìm kiếm -->
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+{{#section 'scripts'}}
+<script>
+    $("#stt").width(10);
+    $("#theloai").width(90);
+    $("#tinhtrang").width(80);
+</script> {{/section}}

@@ -123,14 +123,17 @@ router.post('/edit/:id', (req, res) => {
                                         res.redirect('/admin/book/list');
                                     })
                                     .catch(err => {
+                                        console.log(err);
                                         errorHandler(req, res, 'Sửa thông tin sách không thành công!!!');
                                     })
                             })
                             .catch(err => {
+                                console.log(err);
                                 errorHandler(req, res, 'Sửa thông tin sách không thành công!!!');
                             })
                     })
                     .catch(err => {
+                        console.log(err);
                         errorHandler(req, res, 'Sửa thông tin sách không thành công!!!');
                     })
             })

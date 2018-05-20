@@ -9,9 +9,6 @@
             <a href="/">Home</a>
         </li>
         {{/ifCond}}
-        <li>
-            <a href="#">Sách</a>
-        </li>
         {{#ifCond page '==' 'THELOAI'}}
         <li>
             <a href="/theloai" class="current">Thể loại</a>
@@ -31,9 +28,12 @@
             <a href="/tacgia">Tác giả</a>
         </li>
         {{/ifCond}}
+        {{#if user}}
+            <a href="/info">{{user.USERNAME}}</a>
+        {{else}}
         <li>
-            <a href="#">Quản lý</a>
+            <a href="/login">Đăng nhập</a>
         </li>
+        {{/if}}
     </ul>
-    <input type="text" name="search" placeholder="Search..">
 </div>

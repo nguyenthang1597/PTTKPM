@@ -17,4 +17,7 @@ $(document).ready(function () {
                 $('#SOLUONGCONLAI').val(respone.data.SOLUONGCONLAI)
             })
     })
+
+
+    
 })

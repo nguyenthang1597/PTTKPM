@@ -16,7 +16,7 @@ var DOCGIA = {
     },
     getById: (id) => {
         return new Promise((resolve, reject) => {
-            var query = `select * from DOCGIA where id = '${id}'`;
+            var query = `select *, DATE_FORMAT(DOCGIA.NGAYSINH, "%Y-%m-%d") as NGAYSINH from DOCGIA where MA_DOCGIA = '${id}'`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
@@ -38,7 +38,7 @@ var DOCGIA = {
     },
     updateDOCGIA: (DOCGIA) => {
         return new Promise((resolve, reject) => {
-            var query = `update DOCGIA set TEN = '${DOCGIA.TEN}', NGAYSINH = '${DOCGIA.NGAYSINH}', GIOITINH = ${DOCGIA.GIOITINH}, EMAIL = '${DOCGIA.EMAIL}', DIACHI = '${DOCGI.DIACHI}', CMND = '${DOCGIA.CMND}', NGUOIGIAMHO = '${DOCGIA.NGUOIGIAMHO}' where MA_DOCGIA = '${DOCGIA.MA_DOCGIA}'`;
+            var query = `update DOCGIA set TEN = '${DOCGIA.TEN}', NGAYSINH = '${DOCGIA.NGAYSINH}', GIOITINH = ${DOCGIA.GIOITINH}, EMAIL = '${DOCGIA.EMAIL}', DIACHI = '${DOCGIA.DIACHI}', CMND = '${DOCGIA.CMND}' where MA_DOCGIA = '${DOCGIA.MA_DOCGIA}'`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
@@ -68,7 +68,7 @@ var DOCGIA = {
                     resolve(result);
             });
         });
-    }
+    },
 }
 
 

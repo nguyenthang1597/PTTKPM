@@ -60,7 +60,7 @@ var TACGIA = {
             if (TACGIA.TUOI)
                 query = `update TACGIA set TEN = '${TACGIA.TEN}', TUOI = ${TACGIA.TUOI}, THONGTIN = '${TACGIA.THONGTIN}', isHide = '${TACGIA.isHide}', picture = '${TACGIA.picture}' where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
             else
-                query = `update TACGIA set TEN = '${TACGIA.TEN}', THONGTIN = '${TACGIA.THONGTIN}', isHide = '${TACGIA.isHide}','${TACGIA.picture}'  where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
+                query = `update TACGIA set TEN = '${TACGIA.TEN}', THONGTIN = '${TACGIA.THONGTIN}', isHide = '${TACGIA.isHide}',picture = '${TACGIA.picture}'  where MA_TACGIA = '${TACGIA.MA_TACGIA}'`;
             console.log(query);
             mysql.query(query, (err, result, fields) => {
                 if (err)

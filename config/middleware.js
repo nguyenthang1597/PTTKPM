@@ -11,6 +11,11 @@ var middleware = {
             return next();
         res.redirect('/admin/dashboard');
     },
+    LoggedUser: (req, res, next) => {
+        if (!req.isAuthenticated())
+            return next();
+        res.redirect('/');
+    },
     isThuThuAccess: (req, res, next) => {
         if (req.isAuthenticated()) {
             if (req.user.ROLE != 1)

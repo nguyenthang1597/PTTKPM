@@ -15,15 +15,18 @@
                 {{#each authors}}
                 <div class="row">
                     {{#each this}}
-                    <div class="box_author">
-                        <img src="/upload/author/{{picture}}">
-                        <div class="thongtin">
-                            <p>{{TEN}}</p>
+                    <a href="/tacgia/{{MA_TACGIA}}">
+                        <div class="box_author">
+                            <img src="/upload/author/{{picture}}">
+                            <div class="thongtin">
+                                <p>{{TEN}}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
                     {{/each}}
                 </div>
-                {{/each}} 
+                {{/each}}
             </div>
             <div class="cleaner_with_height">&nbsp;</div>
             <div class="pagination">
@@ -40,7 +43,7 @@
     </div>
     <!-- end of content -->
 
-   {{>user-footer}}
+    {{>user-footer}}
     <!-- end of footer -->
 
 </div>

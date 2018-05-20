@@ -17,22 +17,43 @@ var LoginController = {
                 req.session.user = user;
                 if (req.body.remember) {
                     req.session.cookie.originalMaxAge = 1000 * 60 * 3;
-                }
-                else
+                } else
                     req.session.cookie.originalMaxAge = false;
                 return res.redirect('/admin/dashboard');
             })
         })(req, res, next)
     },
+    formLogin: (req, res) => {
+        res.render('user/login', {
+            message: req.flash('loginMessage'),
+            success_message: req.flash('susscesMesage')
+        })
+    },
+    userLogin: (req, res, next) => {
+        passport.authenticate('local-login', (err, user, info) => {
+            if (err) return next(err);
+            if (!user) return res.redirect('/login');
+            req.logIn(user, (err) => {
+                if (err) return done(err);
+                req.session.user = user;
+                if (req.body.remember) {
+                    req.session.cookie.originalMaxAge = 1000 * 60 * 3;
+                } else
+                    req.session.cookie.originalMaxAge = false;
+                return res.redirect('/');
+            })
+        })(req, res, next)
+    },
     adminLogout: (req, res) => {
         req.logout();
-        if(!req.session.cookie.expires)
+        if (!req.session.cookie.expires)
             req.session.destroy();
         res.redirect('/admin');
     },
     logout: (req, res, next) => {
         req.logout();
-        req.session = {};
+        if (!req.session.cookie.expires)
+            req.session.destroy();
         res.redirect('/');
     }
 }

@@ -35,6 +35,17 @@ var MUONSACH = {
                     resolve(results);
             })
         });
+    },
+    getBook: (id) => {
+        return new Promise((resolve, reject) => {
+            var query = `select NXB.TEN as NXB, SACH.TEN as TEN, THELOAI.TEN as THELOAI, TACGIA.TEN as TACGIA, MUONSACH.* from NHAXUATBAN as NXB, SACH, THELOAI, TACGIA, DSTHELOAI, DSTACGIA, THETHUVIEN, MUONSACH where SACH.MA_SACH = DSTHELOAI.MA_SACH and DSTHELOAI.MA_THELOAI = THELOAI.MA_THELOAI and SACH.MA_SACH = DSTACGIA.MA_SACH and DSTACGIA.MA_TACGIA = TACGIA.MA_TACGIA and SACH.MA_SACH = MUONSACH.MA_SACH and MUONSACH.MA_THE = THETHUVIEN.MA_THE and SACH.NXB = NXB.MA_NXB and THETHUVIEN.DOCGIA = '${id}'`
+            mysql.query(query, (err, results, fields) => {
+                if(err)
+                    reject(err);
+                else
+                    resolve(results);
+            })
+        });
     }
 }
 
