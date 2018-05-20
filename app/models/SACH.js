@@ -37,7 +37,7 @@ var SACH = {
     },
     getById: (id) => {
         return new Promise((resolve, reject) => {
-            var query = `select SACH.MA_SACH, SACH.TEN, DATE_FORMAT(SACH.NGAYNHAP, '%d/%m/%Y') as NGAYNHAP, SACH.SOLUONG, SACH.NAMXB, SACH.isHide, SACH.isHighlight, SACH.picture, SACH.NGUOINHAP, DATE_FORMAT(SACH.NGAYCAPNHAT, '%d/%m/%Y') as NGAYCAPNHAT, SACH.CONTENT, SACH.SUMMARY from SACH where MA_SACH = '${id}'`;
+            var query = `select SACH.MA_SACH, SACH.TEN, DATE_FORMAT(SACH.NGAYNHAP, '%d/%m/%Y') as NGAYNHAP, SACH.SOLUONG, SACH.NAMXB, SACH.isHide, SACH.isHighlight, SACH.picture, SACH.NGUOINHAP, DATE_FORMAT(SACH.NGAYCAPNHAT, '%d/%m/%Y') as NGAYCAPNHAT, SACH.CONTENT, SACH.SUMMARY, SACH.SOLUONGCONLAI from SACH where MA_SACH = '${id}'`;
             mysql.query(query, (err, result, fields) => {
                 if (err)
                     reject(err);
@@ -131,6 +131,17 @@ var SACH = {
                     reject(err);
                 else
                     resolve(result[0]);
+            })
+        });
+    },
+    updateSLCL: (info) => {
+        return new Promise((resolve, reject) => {
+            var query = `update SACH set SOLUONGCONLAI = SOLUONGCONLAI - ${info.SOLUONG} where MA_SACH = '${info.MA_SACH}'`
+            mysql.query(query, (err, result, fields) => {
+                if (err)
+                    reject(err);
+                else
+                    resolve(result);
             })
         });
     }

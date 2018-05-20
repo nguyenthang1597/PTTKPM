@@ -203,7 +203,8 @@ router.post('/add', (req, res) => {
                                 req.flash('successMessage', 'Thêm sách mới thành công!!!');
                                 res.redirect('/admin/book/list');
                             })
-                            .catch(err => {console.log(err);
+                            .catch(err => {
+                                console.log(err);
                                 Book.deleteById(result1.insertId);
                                 errorHandler(req, res, 'Thêm sách mới không thành công!!!');
                             })
@@ -290,6 +291,18 @@ router.post('/update-highlight', (req, res) => {
             })
 
     }
+})
+
+router.get('/getbook/:id', (req, res) => {
+
+    console.log(req.params);
+    Book.getById(req.params.id)
+        .then(result => {
+
+            res.status(200).send(result);
+        })
+
+
 })
 
 module.exports = router;
