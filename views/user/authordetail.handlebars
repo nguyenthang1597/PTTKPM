@@ -1,0 +1,46 @@
+<div id="templatemo_container">
+    {{>user-menu}}
+    <!-- end of menu -->
+
+    <div id="templatemo_header">
+
+    </div>
+    <!-- end of header -->
+    <div id="templatemo_content">
+        <div id="templatemo_content_right">
+
+            <h1>{{author.TEN}}
+            </h1>
+            <div class="image_panel">
+                <img src="/upload/author/{{author.picture}}" alt="" width="150" height="200" />
+            </div>
+
+            <div class="tomtatthongtin">
+                {{!--
+                <h2>Read the lessons - Watch the videos - Do the exercises</h2> --}}
+                <ul>
+                    
+                    <li>Ngày Sinh: {{toDate author.NGAYSINH}}</li>
+                    {{#if author.NGAYMAT}}
+                    <li>Ngày Mất: {{toDate author.NGAYMAT}}</li>
+                    {{/if}}
+                   
+                </ul>
+            </div>
+            <div class="ttchitiet">
+                {{{author.THONGTIN}}}
+            </div>
+
+            <div class="cleaner_with_height">&nbsp;</div>
+        </div>
+        <!-- end of content right -->
+
+        <div class="cleaner_with_height">&nbsp;</div>
+    </div>
+    <!-- end of content -->
+
+    {{>user-footer}}
+    <!-- end of footer -->
+
+</div>
+<!-- end of container -->

@@ -1,0 +1,60 @@
+<div id="templatemo_container">
+    {{>user-menu}}
+    <!-- end of menu -->
+
+    <div id="templatemo_header">
+
+    </div>
+    <!-- end of header -->
+    <div id="templatemo_content">
+        <div id="templatemo_content_left">
+            <div class="templatemo_content_left_section">
+                <h1>Thể loại</h1>
+                {{#each genres}}
+                <ul>
+                    <li>
+                        <a href="/theloai/{{_id}}">{{TEN}}</a>
+                    </li>
+                </ul>
+                {{/each}}
+            </div>
+        </div>
+        
+
+        <div id="templatemo_content_right">
+
+            <h1>Danh sách theo thể loại: {{genre}}</h1>
+
+            <div class="danhsach">
+                {{#each books}}
+                <div class="row">
+                    {{#each this}}
+                    <a href="/sach/{{_id}}">
+                    <div class="box">
+                        <img src="/upload/book/{{picture}}">
+                        <div class="thongtin">
+                            <p>{{TEN}}</p>
+                            <p>Thể loại: {{#each THELOAI}}{{TEN}}{{/each}}</p>
+                            <p>Tác giả: {{#each TACGIA}}{{TEN}}{{/each}}</p>
+                            <p>Số lượng sách còn: {{SOLUONGCONLAI}}</p>
+                        </div>
+                    </div>
+                    </a>
+                    {{/each}}
+                </div>
+                {{/each}} 
+            </div>
+            <!-- End danh sách các sách có trong thư viện -->
+            <div class="cleaner_with_height">&nbsp;</div>
+        </div>
+        <!-- end of content right -->
+
+        <div class="cleaner_with_height">&nbsp;</div>
+    </div>
+    <!-- end of content -->
+
+    {{>user-footer}}
+    <!-- end of footer -->
+
+</div>
+<!-- end of container -->

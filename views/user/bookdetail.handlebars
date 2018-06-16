@@ -1,0 +1,53 @@
+<div id="templatemo_container">
+    {{>user-menu}}
+    <div id="templatemo_header"></div>
+    <div id="templatemo_content">
+        <div id="templatemo_content_left">
+            <div class="templatemo_content_left_section">
+                <h1>Thể loại</h1>
+                {{#each genres}}
+                <ul>
+                    <li>
+                        <a href="/theloai/{{_id}}">{{TEN}}</a>
+                    </li>
+                </ul>
+                {{/each}}
+            </div>
+            <div class="templatemo_content_left_section">
+                <h1>Tác giả</h1>
+                {{#each authors}}
+                <ul>
+                    <li>
+                        <a href="/tacgia/{{_id}}">{{TEN}}</a>
+                    </li>
+                </ul>
+                {{/each}}
+            </div>
+
+        </div>
+        <div id="templatemo_content_right">
+            <h1>{{book.TEN}}
+                <span> - {{#each book.TACGIA}} {{TEN}} {{/each}}</span>
+            </h1>
+            <div class="image_panel">
+                <img src="/upload/book/{{book.picture}}" alt="" width="150" height="200" />
+            </div>
+
+            <div class="tomtatthongtin">
+                <ul>
+                    <li>Tác giả
+                        {{#each book.TACGIA}}
+                        <a href="/tacgia/{{_id}}">{{TEN}}</a>
+                        {{/each}}
+                    </li>
+                    <li>Thể loại: {{#each book.THELOAI}} {{TEN}} {{/each}}</li>
+                </ul>
+            </div>
+            <div class="ttchitiet">
+                {{{book.SUMMARY}}}
+            </div>
+            <div class="cleaner_with_height">&nbsp;</div>
+        </div>
+        <div class="cleaner_with_height">&nbsp;</div>
+    </div>
+</div>

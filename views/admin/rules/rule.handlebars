@@ -1,0 +1,92 @@
+<div class="main-content">
+
+    {{>header-admin}}
+
+    <hr /> {{>breadcrumb-admin}}
+    <h2>{{heading}}</h2>
+
+    {{#if successMessage}}
+    <div class="alert alert-success">{{successMessage}}</div>
+    {{/if}} {{#if errorMessage}}
+    <div class="alert alert-danger">{{errorMessage}}</div>
+    {{/if}}
+    <form method="POST" class="form-horizontal form-groups-bordered">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-primary" data-collapsed="0">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            {{heading}}
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Số ngày mượn</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="SONGAYMUON" value="{{rules.SONGAYMUON}}" id="TEN" class="form-control" placeholder="Tên" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Số sách tối đa</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="SOSACHTOIDA" value="{{rules.SOSACHTOIDA}}" id="TEN" class="form-control" placeholder="Tên" required>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-8" style="text-align: center;">
+                    <div class="bs-example">
+                        <button type="submit" class="btn btn-green btn-icon">
+                            Cập nhật
+                            <i class="entypo-check"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+    </form>
+    </div>
+
+    <br />
+
+</div>
+
+
+
+
+
+
+{{#section 'scripts'}}
+<!-- Imported styles on this page -->
+
+<!-- Bottom scripts (common) -->
+<script src="/assets/admin/js/gsap/TweenMax.min.js"></script>
+<script src="/assets/admin/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="/assets/admin/js/bootstrap.js"></script>
+<script src="/assets/admin/js/resizeable.js"></script>
+<script src="/assets/admin/js/neon-api.js"></script>
+<script src="/assets/admin/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+
+<!-- JavaScripts initializations and stuff -->
+<script src="/assets/admin/js/neon-custom.js"></script>
+
+<!-- Imported scripts on this page -->
+<script src="/assets/admin/js/bootstrap-switch.min.js"></script>
+
+<!-- Demo Settings -->
+<script src="/assets/admin/js/neon-demo.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('div.alert').delay(5000).slideUp();
+    });
+</script>
+
+{{/section}}

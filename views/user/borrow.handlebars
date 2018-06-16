@@ -1,0 +1,65 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Thông tin
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>
+                        <a href="/info">Quản lý</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-edit"></i> Thông tin
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Danh sách sách đã mượn</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th id='tensach'>Tên Sách</th>
+                            <th>Ngày mượn</th>
+                            <th id="tinhtrang">Tình trạng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each books}}
+                        <tr>
+                            <td>{{SACH.TEN}}</td>
+                            <td>{{toDate NGAYMUON}}</td>
+                            <td>
+                                {{#ifCond TINHTRANG '==' 1}} Đã trả {{else}} Chưa trả {{/ifCond}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Bang kết quả tìm kiếm -->
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+{{#section 'scripts'}}
+<script>
+    $("#stt").width(10);
+    $("#theloai").width(90);
+    $("#tinhtrang").width(80);
+</script> {{/section}}
